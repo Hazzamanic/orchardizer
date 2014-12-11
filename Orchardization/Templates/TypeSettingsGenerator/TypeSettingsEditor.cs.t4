@@ -1,0 +1,19 @@
+﻿<#@ template language="C#" hostspecific="true" #>
+<#@ Output Extension="cshtml" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ parameter type="System.String" name="PartName" #>
+<#@ parameter type="System.String" name="Module" #>
+<#@ parameter type="System.Collections.Generic.Dictionary<System.String,System.String>" name="Settings" #>
+@model <#= Module #>.Models.<#= PartName #>
+
+<fieldset>
+    <legend></legend>
+<#  foreach(var property in Settings) { #>
+	<div>
+			@Html.LabelFor(m => m.<#= property.Key #>, T("<#= Regex.Replace(property.Key, "([a-z])([A-Z])", "$1 $2") #>"))
+			@Html.EditorFor(m => m.<#= property.Key #>)
+			<span class="hint">@T("")</span>
+			@Html.ValidationMessage("<#= property.Key #>", "*")
+		</div>
+<# } #>
+</fieldset>

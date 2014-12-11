@@ -1,0 +1,55 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="MigControl"
+	mc:Ignorable="d"
+	x:Class="Orchardizer.UI.MigrationControl" Width="750" >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="b2v" />
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <CheckBox IsChecked="{Binding Create}" HorizontalAlignment="Left" Margin="19.681,10,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="60.137,7.831,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27.988" Width="143.398"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="255,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99"><Run Text="Column "/><Run Text="Na"/><Run Text="m"/><Run Text="e"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Height="21" Margin="338,10,0,0" TextWrapping="Wrap" Text="{Binding SuggestedName}" VerticalAlignment="Top" Width="161"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="518,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Text="Type"/>
+        <TextBox HorizontalAlignment="Left" Height="21" Margin="561,10,0,0" TextWrapping="Wrap" Text="{Binding SuggestedType}" VerticalAlignment="Top" Width="152"/>
+        <Expander Header="Show Details" IsExpanded="False" Margin="10,31,-10,1">
+            <Grid>
+
+
+                <!--<TextBlock HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" Text="{Binding Path=Type, StringFormat=Your data  type is {0} so it is suggested you use use {1} as the data type in the database}" VerticalAlignment="Top" Width="691" Height="23"/>-->
+                <TextBlock HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="691" Height="23" TextWrapping="Wrap" >
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}Your data  type is {0} so it is suggested you use use {1} as the data type in the database">
+                            <Binding Path="Type" />
+                            <Binding Path="SuggestedType" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+
+                </TextBlock>
+
+                <TextBlock HorizontalAlignment="Left" Margin="20,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nullable"/><Run/></TextBlock>
+                <CheckBox IsChecked="{Binding Nullable}" Content="" HorizontalAlignment="Left" Height="15" Margin="89,38,0,0" VerticalAlignment="Top" Width="43"/>
+
+                <TextBlock HorizontalAlignment="Left" Margin="142,38,0,0" TextWrapping="Wrap" Text="Not Null" VerticalAlignment="Top"/>
+                <CheckBox IsChecked="{Binding NotNull}" Content="" HorizontalAlignment="Left" Height="17" Margin="215,40,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="0.5,0.5" />
+
+                <TextBlock HorizontalAlignment="Left" Margin="274,40,0,0" TextWrapping="Wrap" Text="Default Value" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="373,37,0,0" TextWrapping="Wrap" Text="{Binding WithDefault}" VerticalAlignment="Top" Width="120"/>
+
+                <Grid Visibility="{Binding Path=IsString, Converter={StaticResource b2v}}" HorizontalAlignment="Left" Height="38.77" Margin="19.681,122.46,0,0" VerticalAlignment="Top" Width="298.998">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,-42,0,0" TextWrapping="Wrap" Text="Length" VerticalAlignment="Top"/>
+                    <CheckBox IsChecked="{Binding Unlimited}" Content="" HorizontalAlignment="Left" Margin="194,-38,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.04,0"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="128,-41,0,0" TextWrapping="Wrap" Text="Unlimited" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="59,-43,0,0" TextWrapping="Wrap" Text="{Binding Length}" VerticalAlignment="Top" Width="64"/>
+                </Grid>
+            </Grid>
+        </Expander>
+
+    </Grid>
+</UserControl>

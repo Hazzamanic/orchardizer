@@ -1,0 +1,11 @@
+﻿<Window x:Class="Orchardizer.UI.EditMigrationsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Generated migrations code" Height="700" Width="700">
+    <Grid>
+        <TextBox HorizontalAlignment="Stretch" Margin="10,10,10,40" TextWrapping="Wrap" VerticalAlignment="Stretch"  AcceptsTab="True" Text="{Binding Migrations}" ></TextBox>
+
+        <Button Content="Continue" IsDefault="True" HorizontalAlignment="Left" Margin="499,639,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
+        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="591,639,0,0"/>
+    </Grid>
+</Window>

@@ -1,0 +1,38 @@
+﻿@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@{
+    RegisterLink(new LinkEntry {Type = "image/x-icon", Rel = "shortcut icon", Href = Url.Content("~/modules/orchard.themes/Content/orchard.ico")});
+    
+    Script.Include("vendor/modernizr-2.6.2-respond-1.1.0.min.js").AtHead();
+    
+    string title = Convert.ToString(Model.Title);
+    string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+
+    string classForPage = "static " + Html.ClassForPage();
+}
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="@WorkContext.CurrentCulture" class="@classForPage no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="@WorkContext.CurrentCulture" class="@classForPage no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="@WorkContext.CurrentCulture" class="@classForPage no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="@WorkContext.CurrentCulture" class="@classForPage no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>@Html.Title(title, siteName)</title> 
+    <meta name="viewport" content="width=device-width">
+    @Display(Model.Head)
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script>
+</head> 
+<body>
+    <!--[if lt IE 7]>
+    <p class="chromeframe">@T("You are using an outdated browser"). @Html.Link(T("Upgrade your browser today"), "http://browsehappy.com/") 
+        @T("or") @Html.Link(T("install Google Chrome Frame"), "http://www.google.com/chromeframe/?redirect=true") @T("to better experience this site").</p>
+    <![endif]-->
+    @* Layout (template) is in the Body zone @ the default position (nothing, zero, zilch) *@
+    @Display(Model.Body)
+    @Display(Model.Tail)
+</body>
+</html>

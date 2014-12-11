@@ -1,0 +1,8 @@
+Name: $ThemeName$
+Author: $Author$
+Website: http://arkleseizure.net
+Description: $Description$
+Version: 1.0
+# todo: provide tags
+# Tags: Classic, Serif
+$BasedOn$

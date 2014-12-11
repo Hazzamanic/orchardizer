@@ -1,0 +1,10 @@
+﻿Name: $name$
+AntiForgery: enabled
+Author: Orchardizer
+Website: http://orchardproject.net
+Version: 1.0
+OrchardVersion: 1.0
+Description: Description for the module
+Features:
+    $name$:
+        Description: Description for feature $name$.
