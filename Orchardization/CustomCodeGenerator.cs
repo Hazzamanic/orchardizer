@@ -54,11 +54,13 @@ namespace Orchardization
             if (String.IsNullOrWhiteSpace(_viewModel.Storage))
                 throw new InvalidOperationException("Must specify a storage type");
 
-            if (_viewModel.CreateMigrations)
+            if (_viewModel.CreateMigrations) 
+            {
+                _viewModel.Migration = _viewModel.Migration.Replace(" ", String.Empty);
                 if (_viewModel.SelectedMigration == null && String.IsNullOrWhiteSpace(_viewModel.Migration))
-                        throw new InvalidOperationException("Must select a migration or specify a new migrations file");
+                    throw new InvalidOperationException("Must select a migration or specify a new migrations file");
+            }
 
-            _viewModel.Migration = _viewModel.Migration.Replace(" ", String.Empty);
         }
 
         /// <summary>
