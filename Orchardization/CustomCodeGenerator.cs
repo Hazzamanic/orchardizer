@@ -110,6 +110,7 @@ namespace Orchardization
 
             // Add the Models folder
             AddFolder(Context.ActiveProject, "Models");
+
             // Add the part
             if (_viewModel.Storage.Contains("Infoset Storage"))
             {
@@ -216,6 +217,7 @@ namespace Orchardization
                 else
                 {
                     var migrationName = (_viewModel.Migration ?? partName + "Migrations").Trim();
+                    _viewModel.HelpText = _viewModel.HelpText ?? string.Empty;
                     var migrationParams = new Dictionary<string, object>()
                     {
                         { "PartName", partName },
