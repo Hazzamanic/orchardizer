@@ -17,8 +17,7 @@ using Orchard.Data.Migration;
 namespace <#= Module #>
 {
 	public class <#= MigrationName #> : DataMigrationImpl {
-    {
-		public int Create() {
+    		public int Create() {
 <# if(Attachable) { #>
 			ContentDefinitionManager.AlterPartDefinition("<#= PartName #>", builder => builder
 				.Attachable();
