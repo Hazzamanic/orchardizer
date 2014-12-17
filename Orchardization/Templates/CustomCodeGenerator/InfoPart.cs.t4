@@ -17,7 +17,6 @@ namespace <#= Module #>.Models
             get { return this.Retrieve(x => x.<#= property.Key #>); }
             set { this.Store(x => x.<#= property.Key #>, value); }
         }
-
 <# } #>
     }
 }
