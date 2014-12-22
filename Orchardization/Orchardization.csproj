@@ -138,6 +138,10 @@
     <None Include="Templates\CustomCodeGenerator\PartDriver.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Templates\CustomCodeGenerator\AdminMenu.cs.t4">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AdminMenu.cs.cs</LastGenOutput>
+    </None>
     <None Include="Templates\TypeSettingsGenerator\TypeSettingsEditor.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
