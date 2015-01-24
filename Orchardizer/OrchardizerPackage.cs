@@ -352,29 +352,46 @@ namespace Orchardizer
             {
                 // cancel execution
             }
-            FireError(vs);
+            //FireError(vs);
 
 
             var solution = GetGlobalService(typeof(SVsSolution)) as IVsSolution;
             string solDir, solFile, userOpts;
             solution.GetSolutionInfo(out solDir, out solFile, out userOpts);
 
+
+
+
             var process = new Process();
             var startInfo = new ProcessStartInfo
             {
                 WorkingDirectory = solDir,
                 WindowStyle = ProcessWindowStyle.Normal,
+                //CreateNoWindow = true,
                 FileName = "cmd.exe",
                 RedirectStandardInput = true,
+                //RedirectStandardOutput = true,
+                //RedirectStandardOutput = true,
                 UseShellExecute = false,
                 Arguments = String.Format(@"%comspec% /k ""{0}"" x86", vs)
             };
 
             process.StartInfo = startInfo;
+            process.EnableRaisingEvents = true;
+            process.Exited += new EventHandler(process_Exited);
+
             process.Start();
             process.StandardInput.WriteLine("cd..");
-            process.StandardInput.WriteLine("build precompiled");
+            process.StandardInput.WriteLine("build precompiled /k");
+            //process.WaitForExit();
         }
+
+        private void process_Exited(object sender, EventArgs e)
+        {
+            var p = (Process)sender;
+            int exitCode = p.ExitCode;
+        }
+
 
         /// <summary>
         /// Called when the Generate Migrations command is run
