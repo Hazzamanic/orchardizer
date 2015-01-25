@@ -12,6 +12,6 @@
 <# if(ShowAdminSummary) { #>
     <Match DisplayType="SummaryAdmin">
         <Place Parts_<#= PartName #>="-" />
-    <Match>
+    </Match>
 <# } #>
 </Placement>
