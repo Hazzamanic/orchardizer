@@ -745,7 +745,7 @@ namespace Orchardizer
             ep.Delete(end);
 
             var returnVal = update + 1;
-            ep.Insert(updateMethod + Environment.NewLine + Environment.NewLine + "return " + returnVal);
+            ep.Insert(updateMethod + Environment.NewLine + Environment.NewLine + "return " + returnVal + ";");
 
             tp.CreateEditPoint().SmartFormat(ep);
         }

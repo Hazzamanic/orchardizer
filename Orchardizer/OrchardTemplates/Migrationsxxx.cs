@@ -6,7 +6,7 @@ using Orchard.Data.Migration;
 
 namespace $module$
 {
-    public class $migrationName$
+    public class $migrationName$ : DataMigrationImpl
     {
         public int Create()
         {

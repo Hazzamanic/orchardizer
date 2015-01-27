@@ -56,7 +56,6 @@ namespace Orchardization
 
             if (_viewModel.CreateMigrations) 
             {
-                _viewModel.Migration = _viewModel.Migration.Replace(" ", String.Empty);
                 if (_viewModel.SelectedMigration == null && String.IsNullOrWhiteSpace(_viewModel.Migration))
                     throw new InvalidOperationException("Must select a migration or specify a new migrations file");
             }
