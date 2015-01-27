@@ -329,15 +329,19 @@ namespace Orchardizer
             var solution = GetGlobalService(typeof(SVsSolution)) as IVsSolution;
             var path = GetOrchardExe(solution);
             // check it exists
-            // if not, build solution and run again
+            // if not, todo: build solution and run again
             if (!File.Exists(path))
             {
                 FireError("Cannot find Orchard.exe, try building the solution and trying again");
                 return;
             }
 
-            ProcessStartInfo start = new ProcessStartInfo { FileName = path };
-            Process.Start(start);
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "\"" + path + "\""
+            };
+
+            Process.Start(startInfo).Exited += new EventHandler(process_Exited);
         }
 
         /// <summary>
