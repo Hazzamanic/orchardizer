@@ -24,49 +24,88 @@ namespace Orchardization.UI
         {
             get
             {
-                ICodeTypeService codeTypeService = (ICodeTypeService)Context
-                    .ServiceProvider.GetService(typeof(ICodeTypeService));
+                // too slow
+                //ICodeTypeService codeTypeService = (ICodeTypeService) Context
+                //    .ServiceProvider.GetService(typeof (ICodeTypeService));
 
-                var types = codeTypeService.GetAllCodeTypes(Context.ActiveProject).Where(t => t.Kind == vsCMElement.vsCMElementClass);
+                //var types =
+                //    codeTypeService.GetAllCodeTypes(Context.ActiveProject)
+                //        .Where(t => t.Kind == vsCMElement.vsCMElementClass);
 
-                foreach (var type in types)
-                {
-                    CodeClass cc = type as CodeClass;
-                    if (cc.Namespace == null)
-                        continue;
-                    if(cc.Namespace.Name.Contains(Context.ActiveProject.Name)) {
-                        foreach (var d in type.Bases)
-                        {
-                            var dClass = d as CodeClass;
-                            var name = type.Name;
-                            if (dClass.Name == "DataMigrationImpl")
-                            {
-                                    yield return new Migration(type);
-                            }
-
-                        }
-                    }
-                }
-
-
-
-
-                //var clases = Context.ActiveProject.CodeModel.CodeElements;
-
-                //foreach (var e in clases)
+                //foreach (var type in types)
                 //{
-                //    var cc = ce as CodeClass;
-                //    foreach (CodeInterface iface in cc.ImplementedInterfaces)
+                //    CodeClass cc = type as CodeClass;
+                //    if (cc.Namespace == null)
+                //        continue;
+                //    if (cc.Namespace.Name.Contains(Context.ActiveProject.Name))
                 //    {
-                //        if(iface.Name == "")
-                //    }
+                //        foreach (var d in type.Bases)
+                //        {
+                //            var dClass = d as CodeClass;
+                //            var name = type.Name;
+                //            if (dClass.Name == "DataMigrationImpl")
+                //            {
+                //                yield return new Migration(type);
+                //            }
 
+                //        }
+                //    }
                 //}
 
-                //return codeTypeService
-                //    .GetAllCodeTypes(Context.ActiveProject)
-                //    .Select(s => s.GetType())
-                //    .Where(x => x.IsAs)
+                var allClasses = GetProjectItems(Context.ActiveProject.ProjectItems).Where(v => v.Name.Contains(".cs"));
+                // check for .cs extension on each
+
+                foreach (var c in allClasses)
+                {
+                    var eles = c.FileCodeModel;
+                    if (eles == null)
+                        continue;
+                    foreach (var ele in eles.CodeElements)
+                    {
+                        if (ele is EnvDTE.CodeNamespace)
+                        {
+                            var ns = ele as EnvDTE.CodeNamespace;
+                            // run through classes
+                            foreach (var property in ns.Members)
+                            {
+                                var member = property as CodeType;
+                                if (member == null)
+                                    continue;
+
+                                foreach (var d in member.Bases)
+                                {
+                                    var dClass = d as CodeClass;
+                                    if (dClass == null)
+                                        continue;
+
+                                    var name = member.Name;
+                                    if (dClass.Name == "DataMigrationImpl")
+                                    {
+                                        yield return new Migration(member);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    //var clases = Context.ActiveProject.CodeModel.CodeElements;
+
+                    //foreach (var e in clases)
+                    //{
+                    //    var cc = ce as CodeClass;
+                    //    foreach (CodeInterface iface in cc.ImplementedInterfaces)
+                    //    {
+                    //        if(iface.Name == "")
+                    //    }
+
+                    //}
+
+                    //return codeTypeService
+                    //    .GetAllCodeTypes(Context.ActiveProject)
+                    //    .Select(s => s.GetType())
+                    //    .Where(x => x.IsAs)
+                }
             }
         }
 
@@ -84,8 +123,34 @@ namespace Orchardization.UI
         public string WidgetName { get; set; }
         public string HelpText { get; set; }
         public string Migration { get; set; }
+        public string Feature { get; set; }
 
         public CodeGenerationContext Context { get; private set; }
+
+        /// <summary>
+        /// Recursively gets all the ProjectItem objects in a list of projectitems from a Project
+        /// </summary>
+        /// <param name="projectItems">The project items.</param>
+        /// <returns></returns>
+        public IEnumerable<ProjectItem> GetProjectItems(EnvDTE.ProjectItems projectItems)
+        {
+            foreach (EnvDTE.ProjectItem item in projectItems)
+            {
+                yield return item;
+
+                if (item.SubProject != null)
+                {
+                    foreach (EnvDTE.ProjectItem childItem in GetProjectItems(item.SubProject.ProjectItems))
+                        yield return childItem;
+                }
+                else
+                {
+                    foreach (EnvDTE.ProjectItem childItem in GetProjectItems(item.ProjectItems))
+                        yield return childItem;
+                }
+            }
+
+        }
     }
 
     public class Migration
