@@ -4,7 +4,7 @@
 <#@ parameter type="System.String" name="PartName" #>
 <#@ parameter type="System.String" name="Module" #>
 <#@ parameter type="System.Collections.Generic.Dictionary<System.String,System.String>" name="Settings" #>
-@model <#= Module #>.Models.<#= PartName #>
+@model <#= Module #>.Settings.<#= PartName #>Settings
 
 <fieldset>
     <legend></legend>
