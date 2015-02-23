@@ -1037,7 +1037,7 @@ namespace Orchardizer
                 new KeyValuePair<string, string>("$ThemeName$", vm.ThemeName),
                 new KeyValuePair<string, string>("$Author$", vm.Author ?? "Orchardizer"),
                 new KeyValuePair<string, string>("$Description$", vm.Description ?? "Theme created by Orchardizer"),
-                new KeyValuePair<string, string>("$BasedOn$", String.IsNullOrWhiteSpace(vm.BasedOn) ? "" : "BasedOn: " + vm.BasedOn)
+                new KeyValuePair<string, string>("$BasedOn$", String.IsNullOrWhiteSpace(vm.BasedOn) ? "" : "BaseTheme: " + vm.BasedOn)
             });
         }
 
