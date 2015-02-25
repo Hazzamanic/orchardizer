@@ -20,7 +20,7 @@ namespace <#= Module #>
     	public int Create() {
 <# if(Attachable) { #>
 			ContentDefinitionManager.AlterPartDefinition("<#= PartName #>", builder => builder
-				.Attachable();
+				.Attachable()
 				.WithDescription("<#= Description #>")
 			);
 <# } #>
