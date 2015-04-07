@@ -1,4 +1,5 @@
 ﻿<#@ template language="C#" hostspecific="true" #>
+<#@ import namespace="System" #>
 <#@ parameter name="Module" type="System.String" #>
 <#@ parameter name="PartName" type="System.String" #>
 <#@ parameter name="Settings" type="System.Collections.Generic.Dictionary<System.String,System.String>" #>
@@ -32,7 +33,7 @@ namespace <#= Module #>.Settings
 
             if (updateModel.TryUpdateModel(settings, "<#= PartName #>Settings", null, null)) {
 <# foreach(var setting in Settings) { #>
-				builder.WithSetting("<#= PartName #>Settings.<#= setting.Key #>", settings.<#= setting.Key #>.ToString(CultureInfo.InvariantCulture));
+				builder.WithSetting("<#= PartName #>Settings.<#= setting.Key #>", settings.<#= setting.Key #><# if(setting.Value == "string") #>.ToString(CultureInfo.InvariantCulture)<# } #>);
 <# } #>
 			}
 

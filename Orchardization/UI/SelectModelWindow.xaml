@@ -97,10 +97,17 @@
 
 
 
+
         </Grid>
 
-        <Button Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="169,545.997,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
-        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="268.703,545.997,0,0"/>
+        <Label Content="Feature:" HorizontalAlignment="Left"   Margin="36,541,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left"
+            	Margin="160,545,0,0"
+            	VerticalAlignment="Top"
+            	Text="{Binding Feature}"
+            	Width="311"/>
+        <Button Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="169,576,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
+        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="266,576,0,0"/>
 
         <TextBlock HorizontalAlignment="Left" Height="124.157" Margin="504.187,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116.914" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Name:string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="215,236,0,0" TextWrapping="Wrap" Text="Show in the admin Content list view" VerticalAlignment="Top" Height="21" Width="256" FontStyle="Italic"/>
