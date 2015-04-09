@@ -68,7 +68,9 @@ namespace Orchardization
             {
                 { "Module", Context.ActiveProject.Name },
                 { "PartName", part },
-                { "Settings", props }
+                { "Settings", props },
+                { "Feature", _viewModel.Feature },
+                { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature)  }
             };
 
             // Add settings folder and files

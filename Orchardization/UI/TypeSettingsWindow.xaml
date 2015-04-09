@@ -28,7 +28,13 @@
         <TextBox HorizontalAlignment="Left" Height="125" Margin="167,102,0,0" VerticalAlignment="Top" Width="311" Text="{Binding Properties}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  />
         <TextBlock HorizontalAlignment="Left" Height="125" Margin="502,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Name:string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
 
-        <Button Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="167,264,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
-        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="262,264,0,0"/>
+        <Button Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="169,282,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
+        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="264,282,0,0"/>
+        <Label Content="Feature" HorizontalAlignment="Left" Height="27" Margin="36,249,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox HorizontalAlignment="Left"
+        	Margin="169,254,0,0"
+        	VerticalAlignment="Top"
+        	Text="{Binding Feature}"
+        	Width="311"/>
     </Grid>
 </Window>
