@@ -396,6 +396,15 @@ namespace Orchardizer
             int exitCode = p.ExitCode;
         }
 
+        /// <summary>
+        /// Generates the content type migration from Orchard export code.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void GenerateContentTypeMigration(object sender, EventArgs e)
+        {
+            
+        }
 
         /// <summary>
         /// Called when the Generate Migrations command is run
