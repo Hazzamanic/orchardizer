@@ -42,11 +42,11 @@ namespace Orchardizer.Helpers
                 foreach (var part in ele.Elements())
                 {
                     // add part to content type
-                    definition.Add(String.Format(".WithPart(\"{0}\"", part.Name));
+                    definition.Add(String.Format(".WithPart(\"{0}\")", part.Name));
                     // add part to list we need to check
                     Add(partsToCheck, name);
                     // add part settings
-                    definition.AddRange(part.Attributes().Select(attr => String.Format(".WithSetting(\"{0}\"", attr.ToString())));
+                    definition.AddRange(part.Attributes().Select(attr => String.Format(".WithSetting(\"{0}\",\"{1}\")", attr.Name, attr.Value)));
                 }
             }
 
@@ -69,10 +69,11 @@ namespace Orchardizer.Helpers
                     var displayName = field.Attribute("DisplayName") == null ? field.Attribute("DisplayName").Value : fieldInfo[0];
                     definition.Add(String.Format(".WithDisplayName(\"{0}\")", displayName));
 
-                    foreach (var attr in field.Attributes().Select(e => e.Name != "DisplayName"))
-                    {
-                        // add field settings here
-                    }
+                    // add field settings
+                    definition.AddRange(field.Attributes()
+                        .Where(e => e.Name != "DisplayName")
+                        .Select(attr => String.Format(".WithSetting(\"{0}\",\"{1}\")", attr.Name, attr.Value))
+                    );
                 }
             }
             
