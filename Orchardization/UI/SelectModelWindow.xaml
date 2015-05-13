@@ -26,7 +26,7 @@
         <TextBox HorizontalAlignment="Left" Height="124.19" Margin="169,83.967,0,0" VerticalAlignment="Top" Width="311" Text="{Binding Properties}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  />
 
 
-        <Label Content="Show in Admin &#xD;&#xA;Summary" HorizontalAlignment="Left" Margin="36,222.896,0,0" VerticalAlignment="Top" Width="119.127"/>
+        <Label Content="Hide in Admin &#xA;Summary" HorizontalAlignment="Left" Margin="36,222.896,0,0" VerticalAlignment="Top" Width="119.127"/>
         <CheckBox Content="" HorizontalAlignment="Left" Height="14.099" Margin="169,238.757,0,0" VerticalAlignment="Top" Width="40.981" IsChecked="{Binding ShowAdminSummary}"/>
 
         <Label Content="Storage" HorizontalAlignment="Left" Margin="35.873,266.747,0,0" VerticalAlignment="Top" Width="119.127"/>
@@ -110,7 +110,7 @@
         <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="266,576,0,0"/>
 
         <TextBlock HorizontalAlignment="Left" Height="124.157" Margin="504.187,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116.914" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Name:string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="215,236,0,0" TextWrapping="Wrap" Text="Show in the admin Content list view" VerticalAlignment="Top" Height="21" Width="256" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" Margin="215,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="256" FontStyle="Italic"><Run Text="Hide "/><Run Text="in the admin Content list view"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="215,316,0,0" TextWrapping="Wrap" Text="Make this a site setting" VerticalAlignment="Top" Height="21" Width="256" FontStyle="Italic"/>
     </Grid>
 </Window>
