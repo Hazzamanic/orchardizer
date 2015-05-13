@@ -10,6 +10,8 @@
 using Orchard.ContentManagement.Handlers;
 using Orchard.Data;
 using Orchard.ContentManagement;
+using Orchard.Localization;
+using <#= Module #>.Models;
 <# if(HasFeature) { #>
 using Orchard.Environment.Extensions;
 <# } #>
