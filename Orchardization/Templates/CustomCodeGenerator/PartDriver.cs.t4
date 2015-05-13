@@ -13,6 +13,7 @@
 <#@ parameter type="System.String" name="Feature" #>
 <#@ parameter type="System.Boolean" name="HasFeature" #>
 using System;
+using System.Xml;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Drivers;
 using <#= Module #>.Models;
@@ -68,13 +69,29 @@ namespace <#= Module #>.Drivers
             var partName = part.PartDefinition.Name;
 
 <#  foreach(var property in Properties) { #>   
-			
+			var _<#= property.Key #> = context.Attribute(partName, "<#= property.Key #>");
+            if (_<#= property.Key #> != null) {
+<# if(property.Value.Contains("bool")) { #>
+					part.<#= property.Key #> = Boolean.Parse(_<#= property.Key #>);
+<# } else if(property.Value.Contains("string") || property.Value.Contains("String")) { #>
+					part.<#= property.Key #> = _<#= property.Key #>;
+<# } else if(property.Value.Contains("int")) { #>
+					part.<#= property.Key #> = Convert.ToInt32(_<#= property.Key #>);
+<# } else if(property.Value.Contains("double")) { #>
+					part.<#= property.Key #> = Convert.ToDouble(_<#= property.Key #>);
+<# } else if(property.Value.Contains("DateTime")) { #>
+					part.<#= property.Key #> = XmlConvert.ToDateTime(_<#= property.Key #>, XmlDateTimeSerializationMode.Utc);
+<# } else { #>
+					// didn't know what to do... ToString()!
+					part.<#= property.Key #> = _<#= property.Key #>.ToString();
+<# } #>
+			}
 <# } #>
 		}
 
 		protected override void Exporting(<#= PartName #> part, ExportContentContext context) {
 <#  foreach(var property in Properties) { #>   
-			
+			context.Element(part.PartDefinition.Name).SetAttributeValue("<#= property.Key #>", part.<#= property.Key #>);
 <# } #>
 		}
     }
