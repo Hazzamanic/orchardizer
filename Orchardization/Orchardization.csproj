@@ -93,10 +93,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Test.cs" />
+    <Compile Include="ElementGenerator.cs" />
     <Compile Include="TypeSettingsGenerator.cs" />
+    <Compile Include="ElementGeneratorFactory.cs" />
     <Compile Include="TypeSettingsGeneratorFactory.cs" />
+    <Compile Include="UI\ElementViewModel.cs" />
     <Compile Include="UI\TypeSettingsViewModel.cs" />
     <Compile Include="UI\CustomViewModel.cs" />
+    <Compile Include="UI\ElementWindow.xaml.cs">
+      <DependentUpon>ElementWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\TypeSettingsWindow.xaml.cs">
       <DependentUpon>TypeSettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -152,6 +158,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UI\ElementWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\TypeSettingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -173,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ItemTemplates\" />
+    <Folder Include="Templates\ElementGenerator\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

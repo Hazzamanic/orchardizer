@@ -1,0 +1,40 @@
+﻿<Window x:Class="Orchardization.UI.ElementWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Height="368.239" Width="668" Title="Generate Part Settings">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="b2v" />
+    </Window.Resources>
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-4">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.042"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Label Content="Select a part" HorizontalAlignment="Left"   Margin="36,39,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left"
+				  Margin="169,44,0,0"
+				  VerticalAlignment="Top"
+				  ItemsSource="{Binding Parts}"
+				  SelectedItem="{Binding PartName, Mode=OneWayToSource}"
+				  Width="311" Height="21"/>
+
+        <Label Content="Properties" HorizontalAlignment="Left" Height="27" Margin="34,102,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox HorizontalAlignment="Left" Height="125" Margin="167,102,0,0" VerticalAlignment="Top" Width="311" Text="{Binding Properties}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  />
+        <TextBlock HorizontalAlignment="Left" Height="125" Margin="502,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Name:string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
+
+        <Button Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="169,282,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
+        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="264,282,0,0"/>
+        <Label Content="Feature" HorizontalAlignment="Left" Height="27" Margin="36,249,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox HorizontalAlignment="Left"
+        	Margin="169,254,0,0"
+        	VerticalAlignment="Top"
+        	Text="{Binding Feature}"
+        	Width="311"/>
+    </Grid>
+</Window>
