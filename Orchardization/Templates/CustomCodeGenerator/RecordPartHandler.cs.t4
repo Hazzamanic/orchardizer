@@ -22,21 +22,21 @@ namespace <#= Module #>.Handlers
 <# if(HasFeature) { #>
 	[OrchardFeature("<#= Feature #>")]
 <# } #>
-	public class <#= PartName #>Handler : ContentHandler
+    public class <#= PartName #>Handler : ContentHandler
     {
         public <#= PartName #>Handler(IRepository<<#= PartName #>Record> repository) {
 <# if(SiteSetting) { #>
-			Filters.Add(new ActivatingFilter<<#= PartName #>>("Site"));	
+            Filters.Add(new ActivatingFilter<<#= PartName #>>("Site"));	
 <# } #>
             Filters.Add(StorageFilter.For(repository));
 
-			T = NullLocalizer.Instance;
+            T = NullLocalizer.Instance;
         }
 
-		public Localizer T { get; set; }
-
+        public Localizer T { get; set; }
 <# if(SiteSetting && HasSiteGroup) { #>
-		protected override void GetItemMetadata(GetContentItemMetadataContext context) {
+
+        protected override void GetItemMetadata(GetContentItemMetadataContext context) {
             if (context.ContentItem.ContentType != "Site")
                 return;
             base.GetItemMetadata(context);

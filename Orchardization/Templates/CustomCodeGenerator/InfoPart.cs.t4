@@ -17,9 +17,9 @@ namespace <#= Module #>.Models
 <# if(HasFeature) { #>
 	[OrchardFeature("<#= Feature #>")]
 <# } #>
-	public class <#= PartName #> : ContentPart
-    {
-<#  foreach(var property in Properties) { #>     
+    public class <#= PartName #> : ContentPart
+    {<#  foreach(var property in Properties) { #>     
+
         public <#=  property.Value #> <#= property.Key #> {
             get { return this.Retrieve(x => x.<#= property.Key #>); }
             set { this.Store(x => x.<#= property.Key #>, value); }

@@ -27,7 +27,7 @@ namespace <#= Module #>.Drivers
 <# if(HasFeature) { #>
 	[OrchardFeature("<#= Feature #>")]
 <# } #>
-	public class <#= PartName #>Driver : ContentPartDriver<<#= PartName #>>
+    public class <#= PartName #>Driver : ContentPartDriver<<#= PartName #>>
     {
         protected override string Prefix
         {
@@ -37,11 +37,11 @@ namespace <#= Module #>.Drivers
 <# if(!SiteSetting) { #>
         protected override DriverResult Display(<#= PartName #> part, string displayType, dynamic shapeHelper)
         {
-			// Put all your driver logic inside this method so that if your part is not being displayed no logic is run. Yay efficiency
+            // Put all your driver logic inside this method so that if your part is not being displayed no logic is run. Yay efficiency
             return ContentShape("Parts_<#= PartName #>", 
-				() => { 
-					return shapeHelper.Parts_<#= PartName #>(Model: part);
-				});
+                () => { 
+                    return shapeHelper.Parts_<#= PartName #>(Model: part);
+                });
         }
 <# } #>
 
@@ -53,9 +53,9 @@ namespace <#= Module #>.Drivers
                     Model: part,
 <# if(SiteSetting && HasSiteGroup) { #>
                     Prefix: Prefix))
-					.OnGroup("<#= SiteSection #>");
+                    .OnGroup("<#= SiteSection #>");
 <# } else { #>
-					Prefix: Prefix));
+                    Prefix: Prefix));
 <# } #>
         }
 

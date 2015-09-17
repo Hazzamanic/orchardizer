@@ -18,7 +18,7 @@ namespace <#= Module #>.Models
 <# if(HasFeature) { #>
 	[OrchardFeature("<#= Feature #>")]
 <# } #>
-	public class <#= PartName #> : ContentPart<<#= PartName #>Record>
+    public class <#= PartName #> : ContentPart<<#= PartName #>Record>
     {
 <#  foreach(var property in Properties) { #>     
         public <#=  property.Value #> <#= property.Key #> {
@@ -27,5 +27,5 @@ namespace <#= Module #>.Models
         }
 
 <# } #>
-	}
+    }
 }

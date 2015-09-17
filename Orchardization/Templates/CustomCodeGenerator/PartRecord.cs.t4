@@ -16,7 +16,7 @@ namespace <#= Module #>.Models
 <# if(HasFeature) { #>
 	[OrchardFeature("<#= Feature #>")]
 <# } #>
-	public class <#= PartName #>Record : ContentPartRecord
+    public class <#= PartName #>Record : ContentPartRecord
     {
 <#  foreach(var property in Properties) { #> 
         public virtual <#=  property.Value #> <#= property.Key #> { get; set; }
