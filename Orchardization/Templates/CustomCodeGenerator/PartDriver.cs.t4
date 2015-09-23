@@ -13,10 +13,10 @@
 <#@ parameter type="System.String" name="Feature" #>
 <#@ parameter type="System.Boolean" name="HasFeature" #>
 using System;
-using System.Xml;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Drivers;
 using <#= Module #>.Models;
+using Orchard.ContentManagement.Handlers;
 <# if(HasFeature) { #>
 using Orchard.Environment.Extensions;
 <# } #>
