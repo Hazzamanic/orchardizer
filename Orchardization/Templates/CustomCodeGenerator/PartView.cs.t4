@@ -42,7 +42,7 @@
 
 </div>
 
-@using(Script.Foot()) {
+@using (Script.Foot()) {
     <script type="text/javascript">
 
     </script>
