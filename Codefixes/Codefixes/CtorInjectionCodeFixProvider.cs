@@ -43,7 +43,7 @@ namespace Codefixes
 
             if(csor == null)
             {
-                tree.GetRoot().DescendantNodes()
+                tree.GetRoot().DescendantNodes();
             }
 
             var cr = new ConstructorRewriter(csor, localDeclaration);
