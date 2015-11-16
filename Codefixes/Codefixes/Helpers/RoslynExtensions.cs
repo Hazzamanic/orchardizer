@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Codefixes.Helpers
             {
 
                 //TODO: check it doesn't contain expression already
-                newCtor.AddBodyStatements(CreateCtorBody())
+                //newCtor.AddBodyStatements(CreateCtorBody())
             }
 
             return ctor;
@@ -36,6 +37,10 @@ namespace Codefixes.Helpers
                     );
         }
 
+        public static string GetFieldVariableName(TypeSyntax type)
+        {
+            return GetFieldVariableName(type, false);
+        }
         public static string GetFieldVariableName(TypeSyntax type, bool underscore)
         {
             var name = type.ToString();
@@ -53,6 +58,41 @@ namespace Codefixes.Helpers
             }
 
             return name;
+        }
+
+        public static string GetFieldName(FieldDeclarationSyntax field)
+        {
+            var variable = field.Declaration.Variables.FirstOrDefault(); //.DescendantNodes().Where(e => e.IsKind(SyntaxKind.IdentifierToken)).Last().Span.ToString();
+            if (variable == null)
+                return "";
+            return variable.Identifier.ToString();
+        }
+
+        public static ParameterListSyntax GenerateParameters(IEnumerable<TypeSyntax> types)
+        {
+            var list = new List<ParameterSyntax>();
+            foreach (var type in types)
+            {
+                var p = SyntaxFactory.Parameter(
+                    new SyntaxList<AttributeListSyntax>(),
+                    new SyntaxTokenList(),
+                    type,
+                    SyntaxFactory.Identifier(GetFieldVariableName(type)),
+                    null);
+
+                list.Add(p);
+            }
+
+            return SyntaxFactory.ParameterList(SyntaxFactory.SeparatedList<ParameterSyntax>(list));
+        }
+
+        public static StatementSyntax GenerateCtorStatement(string field, string param)
+        {
+            return SyntaxFactory.ExpressionStatement(
+                          SyntaxFactory.AssignmentExpression(
+                          SyntaxKind.SimpleAssignmentExpression,
+                          SyntaxFactory.IdentifierName(field),
+                          SyntaxFactory.IdentifierName(param)));
         }
     }
 }
