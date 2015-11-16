@@ -326,11 +326,11 @@ namespace Orchardization
                     Environment.NewLine +
                     @".WithSetting(""Stereotype"", ""Widget"")"
                 );
-                ep.Insert(");" + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                ep.Insert(");" + Environment.NewLine + Environment.NewLine);
             }
 
             var returnVal = update + 1;
-            ep.Insert("return" + returnVal);
+            ep.Insert(string.Format("return {0};", returnVal));
 
             // format document
             tp.CreateEditPoint().SmartFormat(ep);

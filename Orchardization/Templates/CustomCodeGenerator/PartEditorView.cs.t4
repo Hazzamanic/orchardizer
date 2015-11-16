@@ -9,10 +9,10 @@
 <fieldset>
     <legend></legend>
 <#  foreach(var property in Properties) { #>
-	<div>
-		@Html.LabelFor(m => m.<#= property.Key #>, T("<#= Regex.Replace(property.Key, "([a-z])([A-Z])", "$1 $2") #>"))
-		@Html.EditorFor(m => m.<#= property.Key #>)
-		@Html.ValidationMessage("<#= property.Key #>", "*")
-	</div>
+    <div>
+        @Html.LabelFor(m => m.<#= property.Key #>, T("<#= Regex.Replace(property.Key, "([a-z])([A-Z])", "$1 $2") #>"))
+        @Html.EditorFor(m => m.<#= property.Key #>)
+        @Html.ValidationMessage("<#= property.Key #>", "*")
+    </div>
 <# } #>
 </fieldset>
