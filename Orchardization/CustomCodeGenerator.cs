@@ -101,7 +101,7 @@ namespace Orchardization
                 { "ShowAdminSummary", _viewModel.ShowAdminSummary },
                 { "HasSiteGroup", hassitegroup },
                 { "Feature", _viewModel.Feature },
-                { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature)  }
+                { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature) }
             };
 
             // make sure references are there
