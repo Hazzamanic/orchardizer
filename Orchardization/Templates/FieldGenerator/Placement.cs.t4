@@ -1,0 +1,11 @@
+﻿<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="info" #>
+<#@ parameter type="System.String" name="FieldName" #>
+<#@ parameter type="System.String" name="Module" #>
+<Placement>
+    <Place Fields_<#= FieldName #>="Content:3" />
+    <Place Fields_<#= FieldName #>_Edit="Content:3" />
+    <Match DisplayType="SummaryAdmin">
+        <Place Fields_<#= FieldName #>="-" />
+    </Match>
+</Placement>

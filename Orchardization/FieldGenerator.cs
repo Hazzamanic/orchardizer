@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.IO;
 
 namespace Orchardization
 {
@@ -90,6 +91,62 @@ namespace Orchardization
                 { "Feature", _viewModel.Feature },
                 { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature)  }
             };
+
+            // make sure references are there
+            var vsproject = Context.ActiveProject.Object as VSLangProj.VSProject;
+            vsproject.References.Add("Orchard.Core");
+            vsproject.References.Add("Orchard.Framework");
+
+            AddFolder(Context.ActiveProject, "Fields");
+            AddFileFromTemplate(Context.ActiveProject,
+                    "Models\\" + fieldName,
+                    "Field",
+                    parameters,
+                    skipIfExists: true);
+
+            // Add the driver folder and file
+            AddFolder(Context.ActiveProject, "Drivers");
+            AddFileFromTemplate(Context.ActiveProject,
+                "Drivers\\" + fieldName + "Driver",
+                "PartDriver",
+                parameters,
+                skipIfExists: true);
+
+            AddFolder(Context.ActiveProject, @"Views\Fields");
+            AddFileFromTemplate(Context.ActiveProject,
+                "Views\\Parts\\" + fieldName,
+                "FieldView",
+                parameters,
+                skipIfExists: true);
+
+            AddFolder(Context.ActiveProject, @"Views\EditorTemplates\Fields");
+            AddFileFromTemplate(Context.ActiveProject,
+                "Views\\EditorTemplates\\Fields\\" + fieldName,
+                "FieldEditorView",
+                parameters,
+                skipIfExists: true);
+
+            // Add placement file if it doesn't exist
+            var editPlacement = AddFileFromTemplate(
+                Context.ActiveProject,
+                "Placement",
+                "Placement",
+                parameters,
+                skipIfExists: true);
+
+            // Edit placement file if it already exists
+            if (!editPlacement)
+            {
+                var placement = "<Place Fields_" + fieldName + @"=""Content:5"" />"
+                    + Environment.NewLine
+                    + "<Place Fields_" + fieldName + @"_Edit=""Content:5"" />"
+                    + Environment.NewLine;
+                var projectPath = Context.ActiveProject.GetFullPath();
+                var placementPath = projectPath + "Placement.info";
+                var placementText = File.ReadAllText(placementPath);
+                placementText = placementText.Insert(placementText.LastIndexOf("</Placement>"), placement);
+                File.WriteAllText(placementPath, placementText);
+            }
         }        
     }
 }

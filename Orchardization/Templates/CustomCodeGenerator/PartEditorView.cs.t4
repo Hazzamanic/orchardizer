@@ -13,6 +13,7 @@
         @Html.LabelFor(m => m.<#= property.Key #>, T("<#= Regex.Replace(property.Key, "([a-z])([A-Z])", "$1 $2") #>"))
         @Html.EditorFor(m => m.<#= property.Key #>)
         @Html.ValidationMessage("<#= property.Key #>", "*")
+		<span class="hint"></span>
     </div>
 <# } #>
 </fieldset>

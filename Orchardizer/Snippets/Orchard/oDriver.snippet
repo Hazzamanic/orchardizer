@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Content Part Driver</Title>
+			<Shortcut>odriver</Shortcut>
+			<Description>Code snippet for a Content Part driver</Description>
+			<Author>Hazzamanic</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>Name of the Part</ToolTip>
+					<Default>My</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="CSharp">
+				<![CDATA[public class $name$PartDriver : ContentPartDriver<$name$Part>
+				{
+					protected override DriverResult Display($name$Part part, string displayType, dynamic shapeHelper)
+					{
+						return ContentShape("Parts_$name$",
+							() => shapeHelper.Parts_$name$());
+					}
+
+					protected override DriverResult Editor($name$Part part, dynamic shapeHelper)
+					{
+						return ContentShape("Parts_$name$_Edit",
+							() => shapeHelper.EditorTemplate(
+								TemplateName: "Parts.$name$",
+								Model: part,
+								Prefix: Prefix));
+					}
+
+					protected override DriverResult Editor($name$Part part, IUpdateModel updater, dynamic shapeHelper)
+					{
+						updater.TryUpdateModel(part, Prefix, null, null);
+						return Editor(part, shapeHelper);
+					}
+
+					protected override void Exporting($name$Part part, ExportContentContext context)
+					{
+						var element = context.Element(part.PartDefinition.Name);
+
+						//element.SetAttributeValue("Property1", part.Property1);
+					}
+
+					protected override void Importing($name$Part part, ImportContentContext context)
+					{
+						var partName = part.PartDefinition.Name;
+
+						//context.ImportAttribute(partName, "Property1", value => part.Property1 = value);
+					}
+				}$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

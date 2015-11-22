@@ -20,7 +20,6 @@ namespace Orchardization.UI
 
         public string FieldName { get; set; }
         public string Properties { get; set; }
-        public string HelpText { get; set; }
         public string Feature { get; set; }
         public bool IndexField { get; set; }        
 

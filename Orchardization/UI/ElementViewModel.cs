@@ -8,5 +8,8 @@ namespace Orchardization.UI
 {
     public class ElementViewModel
     {
+        public string ElementName { get; set; }
+        public string Feature { get; set; }
+        public string Properties { get; set; }
     }
 }

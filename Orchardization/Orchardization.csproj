@@ -157,13 +157,16 @@
     <None Include="Templates\FieldGenerator\FieldDriver.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\FieldGenerator\PartEditorView.cs.t4">
+    <None Include="Templates\FieldGenerator\FieldEditorView.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Templates\FieldGenerator\Field.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\FieldGenerator\PartView.cs.t4">
+    <None Include="Templates\FieldGenerator\FieldView.cs.t4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\FieldGenerator\Placement.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Templates\TypeSettingsGenerator\TypeSettingsEditor.cs.t4">
