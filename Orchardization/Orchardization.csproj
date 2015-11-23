@@ -154,6 +154,15 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AdminMenu.cs.cs</LastGenOutput>
     </None>
+    <None Include="Templates\ElementGenerator\ElementView.cs.t4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\ElementGenerator\FormsElementDriver.cs.t4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\ElementGenerator\Element.cs.t4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\FieldGenerator\FieldDriver.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -212,7 +221,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ItemTemplates\" />
-    <Folder Include="Templates\ElementGenerator\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -55,6 +55,45 @@ namespace Orchardization
         /// </summary>
         public override void GenerateCode()
         {
+            var name = _viewModel.ElementName.Trim();
+
+            var props = new Dictionary<string, string>();
+            if (!String.IsNullOrEmpty(_viewModel.Properties) || !String.IsNullOrWhiteSpace(_viewModel.Properties))
+            {
+                props = Regex.Split(_viewModel.Properties, "\\n")
+                            .Select(x => x.Split(':'))
+                            .Where(x => x.Length > 1 && !String.IsNullOrEmpty(x[0].Trim()) && !String.IsNullOrEmpty(x[1].Trim()))
+                            .ToDictionary(x => x[0].Trim(), x => x[1].Trim());
+            }
+
+            var firstProperty = props.FirstOrDefault();
+            var hasProperties = firstProperty.Key != null;
+            string firstType = "";
+            string firstKey = "";
+            if (hasProperties)
+            {
+                firstKey = firstProperty.Key;
+                firstType = firstProperty.Value;
+            }
+
+            int s = 12;
+
+            // Setup the scaffolding item creation parameters to be passed into the T4 template. We'll just use one for everything
+            var parameters = new Dictionary<string, object>()
+            {
+                { "ElementName", name },
+                { "Module", Context.ActiveProject.Name },
+                { "Properties", props },
+                { "PropCount", props.Count() },
+                { "HasProperty", hasProperties },
+                { "FirstKey", firstKey },
+                { "FirstType", firstType },
+                { "Category", String.IsNullOrWhiteSpace(_viewModel.Category) ? "Content" : _viewModel.Category },
+                { "Description", String.IsNullOrWhiteSpace(_viewModel.Description) ? $"Add a {name} to the layout" : _viewModel.Description },
+                { "Feature", _viewModel.Feature },
+                { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature)  },
+                { "HasEditor", _viewModel.HasEditor  }
+            };
         }
 
 

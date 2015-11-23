@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" Height="368.239" Width="668" Title="Generate Element">
+             mc:Ignorable="d" Height="529.151" Width="668" Title="Generate Element">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="b2v" />
     </Window.Resources>
-    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-4">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-165">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -16,25 +16,52 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Label Content="Select a part" HorizontalAlignment="Left"   Margin="36,39,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left"
-				  Margin="169,44,0,0"
-				  VerticalAlignment="Top"
-				  ItemsSource="{Binding Parts}"
-				  SelectedItem="{Binding PartName, Mode=OneWayToSource}"
-				  Width="311" Height="21"/>
-
-        <Label Content="Properties" HorizontalAlignment="Left" Height="27" Margin="34,102,0,0" VerticalAlignment="Top" Width="119"/>
-        <TextBox HorizontalAlignment="Left" Height="125" Margin="167,102,0,0" VerticalAlignment="Top" Width="311" Text="{Binding Properties}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  />
-        <TextBlock HorizontalAlignment="Left" Height="125" Margin="502,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Name:string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
-
-        <Button Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="169,282,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
-        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="264,282,0,0"/>
-        <Label Content="Feature" HorizontalAlignment="Left" Height="27" Margin="36,249,0,0" VerticalAlignment="Top" Width="119"/>
+        <Label Content="Element Name" HorizontalAlignment="Left"   Margin="36,39,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left"
-        	Margin="169,254,0,0"
+        	Margin="169,47,0,0"
+        	VerticalAlignment="Top"
+        	Text="{Binding ElementName}"
+        	Width="311"/>
+
+        <Label Content="Category" HorizontalAlignment="Left"   Margin="36,81,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left"
+        	Margin="169,84,0,0"
+        	VerticalAlignment="Top"
+        	Text="{Binding Category}"
+        	Width="311"/>
+
+        <Label Content="Description" HorizontalAlignment="Left"   Margin="36,112,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left"
+        	Margin="169,120,0,0"
+        	VerticalAlignment="Top"
+        	Text="{Binding Description}"
+        	Width="311"/>
+
+        <Label Content="Properties" HorizontalAlignment="Left" Height="27" Margin="36,152,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox HorizontalAlignment="Left" Height="125" Margin="167,152,0,0" VerticalAlignment="Top" Width="311" Text="{Binding Properties}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  />
+        <TextBlock HorizontalAlignment="Left" Height="125" Margin="502,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Name:string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
+
+        <Grid Visibility="{Binding Path=IsChecked,ElementName=HasEditor,Converter={StaticResource b2v}}" Margin="0,308,0,266">
+            <TextBlock HorizontalAlignment="Left" Height="38" Margin="37,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="581" FontStyle="Italic"><Run Text="You can either have a standard view as an editor, or use the forms API to build your form. Go with View if you're "/><Run Text="unsure"/></TextBlock>
+
+            <Label Content="Editor Type" HorizontalAlignment="Left" Margin="37,53,0,0" VerticalAlignment="Top" Width="119"/>
+            <ComboBox HorizontalAlignment="Left" Height="21" Margin="170,58,0,0" VerticalAlignment="Top" Width="311" SelectedItem="{Binding Storage, Mode=OneWayToSource}">
+                <ComboBoxItem Content="Editor View" HorizontalAlignment="Left" Width="177.726"/>
+                <ComboBoxItem Content="Forms API" HorizontalAlignment="Left" Width="177.726"/>
+            </ComboBox>
+        </Grid>
+
+        <Button Content="Add" IsDefault="True" HorizontalAlignment="Left" Margin="169,441,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
+        <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="262,441,0,0"/>
+        <Label Content="Feature" HorizontalAlignment="Left" Height="27" Margin="36,397,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox HorizontalAlignment="Left"
+        	Margin="169,406,0,0"
         	VerticalAlignment="Top"
         	Text="{Binding Feature}"
         	Width="311"/>
+        
+
+
+
     </Grid>
 </Window>
