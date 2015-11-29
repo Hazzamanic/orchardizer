@@ -99,7 +99,7 @@ namespace Orchardization
 
             AddFolder(Context.ActiveProject, "Fields");
             AddFileFromTemplate(Context.ActiveProject,
-                    "Models\\" + fieldName,
+                    "Fields\\" + fieldName,
                     "Field",
                     parameters,
                     skipIfExists: true);
@@ -108,13 +108,13 @@ namespace Orchardization
             AddFolder(Context.ActiveProject, "Drivers");
             AddFileFromTemplate(Context.ActiveProject,
                 "Drivers\\" + fieldName + "Driver",
-                "PartDriver",
+                "FieldDriver",
                 parameters,
                 skipIfExists: true);
 
             AddFolder(Context.ActiveProject, @"Views\Fields");
             AddFileFromTemplate(Context.ActiveProject,
-                "Views\\Parts\\" + fieldName,
+                "Views\\Fields\\" + fieldName,
                 "FieldView",
                 parameters,
                 skipIfExists: true);

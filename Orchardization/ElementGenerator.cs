@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System;
 using System.Linq;
+using EnvDTE;
 
 namespace Orchardization
 {
@@ -76,12 +77,14 @@ namespace Orchardization
                 firstType = firstProperty.Value;
             }
 
-            int s = 12;
+            bool formsEditor = _viewModel.EditorType == null ? false : _viewModel.EditorType.Contains("Forms API");
+            var namePlusElement = name.EndsWith("element", StringComparison.InvariantCultureIgnoreCase) ? name : name + "Element"; // the element name with element appended onto it
 
             // Setup the scaffolding item creation parameters to be passed into the T4 template. We'll just use one for everything
             var parameters = new Dictionary<string, object>()
             {
                 { "ElementName", name },
+                { "NamePlusElement", namePlusElement },
                 { "Module", Context.ActiveProject.Name },
                 { "Properties", props },
                 { "PropCount", props.Count() },
@@ -90,12 +93,128 @@ namespace Orchardization
                 { "FirstType", firstType },
                 { "Category", String.IsNullOrWhiteSpace(_viewModel.Category) ? "Content" : _viewModel.Category },
                 { "Description", String.IsNullOrWhiteSpace(_viewModel.Description) ? $"Add a {name} to the layout" : _viewModel.Description },
-                { "Feature", _viewModel.Feature },
+                { "Feature", String.IsNullOrWhiteSpace(_viewModel.Feature) ? "" : _viewModel.Feature },
                 { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature)  },
-                { "HasEditor", _viewModel.HasEditor  }
+                { "HasEditor", _viewModel.HasEditor },
+                { "FormsEditor", formsEditor }
             };
+
+            // make sure references are there
+            var vsproject = Context.ActiveProject.Object as VSLangProj.VSProject;
+            vsproject.References.Add("Orchard.Core");
+            vsproject.References.Add("Orchard.Framework");
+
+            // in case people are trying to add elements to Orchard.Layouts
+            //if (!vsproject.Project.Name.Contains("Orchard.Layouts")) vsproject.References.Add("Orchard.Layouts.csproj");
+
+            AddFolder(Context.ActiveProject, "Elements");
+            AddFileFromTemplate(Context.ActiveProject,
+                    "Elements\\" + name,
+                    "Element",
+                    parameters,
+                    skipIfExists: true);
+
+            // Add the driver folder and file
+            AddFolder(Context.ActiveProject, "Drivers");
+            if (_viewModel.HasEditor && formsEditor)
+            {
+                vsproject.References.Add("Orchard.Forms");
+
+                AddFileFromTemplate(Context.ActiveProject,
+                    "Drivers\\" + namePlusElement + "Driver",
+                    "FormsElementDriver",
+                    parameters,
+                    skipIfExists: true);
+            }
+            else
+            {
+                AddFileFromTemplate(Context.ActiveProject,
+                    "Drivers\\" + name + "Driver",
+                    "ElementDriver",
+                    parameters,
+                    skipIfExists: true);
+            }
+
+            AddFolder(Context.ActiveProject, @"Views\Elements");
+            AddFileFromTemplate(Context.ActiveProject,
+                "Views\\Elements\\" + name,
+                "ElementView",
+                parameters,
+                skipIfExists: true);
+
+            if(_viewModel.HasEditor && !formsEditor)
+            {
+                AddFolder(Context.ActiveProject, @"ViewModels");
+                AddFileFromTemplate(Context.ActiveProject,
+                    "ViewModels\\" + namePlusElement + "ViewModel",
+                    "FormsElementDriver",
+                    parameters,
+                    skipIfExists: true);
+
+                AddFolder(Context.ActiveProject, @"Views\EditorTemplates");
+                AddFileFromTemplate(Context.ActiveProject,
+                    "Views\\EditorTemplates\\Elements." + name,
+                    "ElementEditorView",
+                    parameters,
+                    skipIfExists: true);
+            }
         }
 
+        //public DTE2 GetActiveIDE()
+        //{
+        //    // Get an instance of currently running Visual Studio IDE.
+        //    DTE2 dte2 = Package.GetGlobalService(typeof(DTE)) as DTE2;
+        //    return dte2;
+        //}
 
+        //public IList<Project> Projects()
+        //{
+        //    Projects projects = GetActiveIDE().Solution.Projects;
+        //    List<Project> list = new List<Project>();
+        //    var item = projects.GetEnumerator();
+        //    while (item.MoveNext())
+        //    {
+        //        var project = item.Current as Project;
+        //        if (project == null)
+        //        {
+        //            continue;
+        //        }
+
+        //        if (project.Kind == ProjectKinds.vsProjectKindSolutionFolder)
+        //        {
+        //            list.AddRange(GetSolutionFolderProjects(project));
+        //        }
+        //        else
+        //        {
+        //            list.Add(project);
+        //        }
+        //    }
+
+        //    return list;
+        //}
+
+        //private IEnumerable<Project> GetSolutionFolderProjects(Project solutionFolder)
+        //{
+        //    List<Project> list = new List<Project>();
+        //    for (var i = 1; i <= solutionFolder.ProjectItems.Count; i++)
+        //    {
+        //        var subProject = solutionFolder.ProjectItems.Item(i).SubProject;
+        //        if (subProject == null)
+        //        {
+        //            continue;
+        //        }
+
+        //        // If this is another solution folder, do a recursive call, otherwise add
+        //        if (subProject.Kind == ProjectKinds.vsProjectKindSolutionFolder)
+        //        {
+        //            list.AddRange(GetSolutionFolderProjects(subProject));
+        //        }
+        //        else
+        //        {
+        //            list.Add(subProject);
+        //        }
+        //    }
+        //    return list;
+        //}
     }
 }

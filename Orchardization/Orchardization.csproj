@@ -157,8 +157,17 @@
     <None Include="Templates\ElementGenerator\ElementView.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\ElementGenerator\FormsElementDriver.cs.t4">
+    <None Include="Templates\ElementGenerator\ElementEditorView.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\ElementGenerator\ElementViewModel.cs.t4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\ElementGenerator\ElementDriver.cs.t4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\ElementGenerator\FormsElementDriver.cs.t4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Templates\ElementGenerator\Element.cs.t4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

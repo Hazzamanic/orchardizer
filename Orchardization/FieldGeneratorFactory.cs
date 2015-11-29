@@ -2,7 +2,6 @@
 using System;
 using System.ComponentModel.Composition;
 using System.Drawing;
-using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -37,7 +36,7 @@ namespace Orchardization
         /// <returns>Instance of CodeGenerator.</returns>
         public override ICodeGenerator CreateInstance(CodeGenerationContext context)
         {
-            return new ElementGenerator(context, Information);
+            return new FieldGenerator(context, Information);
         }
 
         /// <summary>

@@ -3,10 +3,11 @@
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.String" #>
-<#@ parameter type="System.String" name="FieldName" #>
+<#@ parameter type="System.String" name="ElementName" #>
+<#@ parameter type="System.String" name="NamePlusElement" #>
 <#@ parameter type="System.String" name="Module" #>
 <#@ parameter type="System.Collections.Generic.Dictionary<System.String,System.String>" name="Properties" #>
-@model <#= Module #>.Fields.<#= FieldName #>
+@model <#= Module #>.ViewModels.<#= NamePlusElement #>ViewModel
 
 <fieldset>
     <legend></legend>

@@ -41,11 +41,14 @@
         <TextBox HorizontalAlignment="Left" Height="125" Margin="167,152,0,0" VerticalAlignment="Top" Width="311" Text="{Binding Properties}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  />
         <TextBlock HorizontalAlignment="Left" Height="125" Margin="502,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Name:string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
 
+        <Label Content="Has Editor" HorizontalAlignment="Left" Margin="37,282,0,0" VerticalAlignment="Top" Width="119"/>
+        <CheckBox x:Name="HasEditor" Content="" HorizontalAlignment="Left" Height="14" Margin="170,290,0,0" VerticalAlignment="Top" Width="17" IsChecked="{Binding HasEditor}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="216,287,0,0" TextWrapping="Wrap" Text="Create an editor for this element" VerticalAlignment="Top" Height="21" Width="256" FontStyle="Italic"/>
         <Grid Visibility="{Binding Path=IsChecked,ElementName=HasEditor,Converter={StaticResource b2v}}" Margin="0,308,0,266">
             <TextBlock HorizontalAlignment="Left" Height="38" Margin="37,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="581" FontStyle="Italic"><Run Text="You can either have a standard view as an editor, or use the forms API to build your form. Go with View if you're "/><Run Text="unsure"/></TextBlock>
 
             <Label Content="Editor Type" HorizontalAlignment="Left" Margin="37,53,0,0" VerticalAlignment="Top" Width="119"/>
-            <ComboBox HorizontalAlignment="Left" Height="21" Margin="170,58,0,0" VerticalAlignment="Top" Width="311" SelectedItem="{Binding Storage, Mode=OneWayToSource}">
+            <ComboBox HorizontalAlignment="Left" Height="21" Margin="170,58,0,0" VerticalAlignment="Top" Width="311" SelectedItem="{Binding EditorType, Mode=OneWayToSource}">
                 <ComboBoxItem Content="Editor View" HorizontalAlignment="Left" Width="177.726"/>
                 <ComboBoxItem Content="Forms API" HorizontalAlignment="Left" Width="177.726"/>
             </ComboBox>
@@ -60,6 +63,7 @@
         	Text="{Binding Feature}"
         	Width="311"/>
         
+
 
 
 

@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Linq;
+using Codefixes.Helpers;
 
 namespace Codefixes
 {
@@ -22,25 +23,33 @@ namespace Codefixes
             if (constructor == constructorDeclaration)
             {
                 var type = field.Declaration.Type;
-                var variable = field.DescendantNodes().Where(e => e.IsKind(SyntaxKind.IdentifierToken)).Last().Span;
+                var variable = RoslynExtensions.GetFieldName(field);
+                string parameter = variable;
 
-                string name = variable.ToString();
+                if(variable.StartsWith("_"))
+                {
+                    parameter = variable.Substring(1);
+                }
+                else
+                {
+                    variable = "this." + variable;
+                }
 
-                var typeString = type.ToString();
-                if (typeString.StartsWith("I"))
-                    name = typeString.Substring(1);
+                //var typeString = type.ToString();
+                //if (typeString.StartsWith("I"))
+                    //name = typeString.Substring(1);
 
-                name = Char.ToLowerInvariant(name[0]) + name.Substring(1);
+                //name = Char.ToLowerInvariant(name[0]) + name.Substring(1);
                 var p = SyntaxFactory.Parameter(
                     new SyntaxList<AttributeListSyntax>(),
                     new SyntaxTokenList(),
                     type,
-                    SyntaxFactory.Identifier(name),
+                    SyntaxFactory.Identifier(parameter),
                     null);
 
                 var parameters = constructorDeclaration.ParameterList.AddParameters(p);
                 var body = constructorDeclaration.Body;
-                var statement = SyntaxFactory.ParseStatement("this." + name + " = " + name + ";" + Environment.NewLine);//.WithLeadingTrivia(SyntaxFactory.Tab, SyntaxFactory.Tab);
+                var statement = SyntaxFactory.ParseStatement(variable + " = " + parameter + ";" + Environment.NewLine);//.WithLeadingTrivia(SyntaxFactory.Tab, SyntaxFactory.Tab);
                 body = body.AddStatements(statement);
 
                 return constructorDeclaration.WithParameterList(parameters).WithBody(body); //(BlockSyntax)formatted);
