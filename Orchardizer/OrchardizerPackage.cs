@@ -142,14 +142,15 @@ namespace Orchardizer
             }
 
             vm.ThemeName = vm.ThemeName.Replace(" ", String.Empty);
+            vm.Version = vm.Version ?? vm.Versions[0];
 
             if (success.GetValueOrDefault() == false)
                 return;
 
             var solution = GetGlobalService(typeof(SVsSolution)) as IVsSolution;
 
-            if (!extended)
-            //if(true)
+            //if (!extended)
+            if(false)
             {
                 var path = GetOrchardExe(solution);
                 if (!File.Exists(path))
@@ -181,20 +182,23 @@ namespace Orchardizer
             // get the Themes folder in the solution
             Project themesFolderProject = (from Project p in projects where p.Name == "Themes" select p).FirstOrDefault();
             if (themesFolderProject == null)
+            {
                 FireError("There appears to be no Themes folder");
+                return;
+            }
             SolutionFolder themesFolder = themesFolderProject.Object as SolutionFolder;
 
             // Orchard templates
             var templates = Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "OrchardTemplates");
             Project theme = (from ProjectItem item in themesFolderProject.ProjectItems where item.Name == "Themes" select item.Object as Project).FirstOrDefault();
 
-            if (vm.Type.Contains("Bootstrap"))
-            {
-                FireError("I haven't created the bootstrap theme... but I will! Maybe. Probably not. I'm lazy");
-            }
+            //if (vm.Type.Contains("Bootstrap"))
+            //{
+            //    FireError("I haven't created the bootstrap theme... but I will! Maybe. Probably not. I'm lazy");
+            //    return;
+            //}
 
-            if (vm.Type.Contains("Blank"))
-            {
+            
                 if (vm.CreateProject)
                 {
                     BuildThemeWithProject(themesFolder, vm, templates, "__BlankThemeProject");
@@ -203,23 +207,22 @@ namespace Orchardizer
 
                 BuildThemeFromTemplate(theme, vm, templates, "__BlankTheme");
                 return;
-            }
 
-            if (vm.Type.Contains("Theme Machine"))
-            {
-                if (vm.CreateProject)
-                {
-                    var themeType = vm.Responsive ? "__TMRP" : "__TMP";
-                    BuildThemeWithProject(themesFolder, vm, templates, themeType);
-                    return;
-                }
-                else
-                {
-                    var themeType = vm.Responsive ? "__TMR" : "__TM";
-                    BuildThemeFromTemplate(theme, vm, templates, themeType);
-                    return;
-                }
-            }
+            //if (vm.Type.Contains("Theme Machine"))
+            //{
+            //    if (vm.CreateProject)
+            //    {
+            //        var themeType = vm.Responsive ? "__TMRP" : "__TMP";
+            //        BuildThemeWithProject(themesFolder, vm, templates, themeType);
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        var themeType = vm.Responsive ? "__TMR" : "__TM";
+            //        BuildThemeFromTemplate(theme, vm, templates, themeType);
+            //        return;
+            //    }
+            //}
 
             //// get the themes project
             //if (theme == null)
@@ -268,6 +271,7 @@ namespace Orchardizer
             }
 
             var name = Regex.Replace(vm.Name, @"\s+", "");
+            string version = vm.Version ?? vm.Versions[0];
 
             IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
             var templates = Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "OrchardTemplates");
@@ -302,9 +306,21 @@ namespace Orchardizer
 
             var newDir = Path.Combine(solpath, "Orchard.Web", "Modules", name);
 
-            var newproj = modulesFolder.AddFromTemplate(Path.Combine(templates, "__BlankModule", "BlankModule.csproj"), newDir, name);
+            var newproj = modulesFolder.AddFromTemplate(Path.Combine(templates, "__BlankModule", version, "BlankModule.csproj"), newDir, name);
             // it does not edit the assembly name so we will do that ourselves
-            EditCsProj(Path.Combine(newDir, name + ".csproj"), name);
+            Insert(Path.Combine(newDir, name + ".csproj"),
+                new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("$$ModuleProjectGuid$$", Guid.NewGuid().ToString()),
+                    new KeyValuePair<string, string>("$$ModuleName$$", name)
+                });
+
+            Insert(Path.Combine(newDir, "Properties", "AssemblyInfo.cs"),
+                new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("$$ModuleTypeLibGuid$$", Guid.NewGuid().ToString()),
+                    new KeyValuePair<string, string>("$$ModuleName$$", name)
+                });
 
             newproj.Properties.Item("AssemblyName").Value = name;
 
@@ -804,7 +820,7 @@ namespace Orchardizer
             var projItems = theme.ProjectItems;
             var themePath = theme.FileName.Replace("Themes.csproj", vm.ThemeName);
 
-            var newproj = projItems.AddFromDirectory(templates + "\\" + themeType);
+            var newproj = projItems.AddFromDirectory(Path.Combine(templates, vm.Version, themeType));
             newproj.Name = vm.ThemeName;
             EditThemeFile(themePath, vm);
 
@@ -830,28 +846,27 @@ namespace Orchardizer
             string solfile;
             string soloptions;
             solution.GetSolutionInfo(out solpath, out solfile, out soloptions);
-
-            //TODO: fix this...
+            
             var newDir = Path.Combine(solpath, "Orchard.Web", "Themes", vm.ThemeName);
-            var newproj = themesFolder.AddFromTemplate(Path.Combine(templates, themeType, themeType + ".csproj"), newDir, vm.ThemeName);
+            var newproj = themesFolder.AddFromTemplate(Path.Combine(templates, themeType, vm.Version, themeType + ".csproj"), newDir, vm.ThemeName);
 
-            // this doesn't work
-            EditCsProj(Path.Combine(newDir, vm.ThemeName + ".csproj"), vm.ThemeName);
+            Insert(Path.Combine(newDir, vm.ThemeName + ".csproj"),
+                new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("$$ModuleProjectGuid$$", Guid.NewGuid().ToString()),
+                    new KeyValuePair<string, string>("$$ModuleName$$", vm.ThemeName)
+                });
             // this does work...
             newproj.Properties.Item("AssemblyName").Value = vm.ThemeName;
             // need this as well because... I have no idea
             newproj.Properties.Item("RootNamespace").Value = vm.ThemeName;
             EditThemeFile(newDir, vm);
 
+            // isn't added to tfs for some reason...
             if (vm.IncludeHelpFile)
                 newproj.ProjectItems.AddFromFile(templates + "\\ThemeHelp.md");
 
             newproj.Save();
-
-            // for some reason this doesn't appear to work, references are manually added in the csproj file :(
-            //var vsproj = newproj.Object as VSProject;
-            //vsproj.References.Add("Orchard.Core");
-            //vsproj.References.Add("Orchard.Framework");
         }
 
         /// <summary>
@@ -1057,10 +1072,12 @@ namespace Orchardizer
         /// <param name="name">The name.</param>
         private void EditCsProj(string path, string name)
         {
+            var guid = Guid.NewGuid().ToString();
+
             Insert(path,
                 new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("$guid$", Guid.NewGuid().ToString()),
+                    new KeyValuePair<string, string>("$guid$", guid),
                     new KeyValuePair<string, string>("$name$", name)
                 });
         }

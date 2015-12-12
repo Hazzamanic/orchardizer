@@ -10,6 +10,14 @@
         public bool Responsive { get; set; }
         public string Type { get; set; }
         public bool Codegen { get; set; }
+        public string Version { get; set; }
+        public string[] Versions
+        {
+            get
+            {
+                return OrchardVersions.Versions;
+            }
+        }
 
         public bool AntiCodegen
         {

@@ -1,13 +1,5 @@
 # Getting started with theming
 
-## Philip Senechal's sensational guide to building a theme from a pre-existing template
-- [Part 1] (http://philipsenechal.com/blog/orchard-theme-from-a-template)
-- [Part 2] (http://philipsenechal.com/blog/orchard-theme-from-a-template-part-2)
-- [Part 3] (http://philipsenechal.com/blog/orchard-theme-from-a-template-part-3)
-- [Part 4] (http://philipsenechal.com/blog/orchard-theme-from-a-template-part-4)
-- [Part 5] (http://philipsenechal.com/blog/orchard-theme-from-a-template-part-5)
-- [Part 6] (http://philipsenechal.com/blog/orchard-theme-from-a-template-part-6)
-
 ## Orchard
 - [Writing a new theme] (http://docs.orchardproject.net/Documentation/Writing-a-new-theme)
 - [Customizing the default theme] (http://docs.orchardproject.net/Documentation/Customizing-the-default-theme)

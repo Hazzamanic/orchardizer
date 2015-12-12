@@ -5,8 +5,17 @@
     <Grid Height="163" VerticalAlignment="Top" Margin="0,0,-8,-4">
         <Label Content="Name" HorizontalAlignment="Left" Height="30" Margin="20,32,0,0" VerticalAlignment="Top" Width="140"/>
         <TextBox HorizontalAlignment="Left" Height="20" Margin="89,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="{Binding Name}" />
+        <Label Content="Version" HorizontalAlignment="Left" Height="30" Margin="20,67,0,0" VerticalAlignment="Top" Width="69"/>
+        <ComboBox HorizontalAlignment="Left"
+				  Margin="89,71,0,0"
+				  VerticalAlignment="Top"
+                  ItemsSource="{Binding Path=Versions}" 
+                  SelectedValue="{Binding Version, Mode=TwoWay}"
+				  Width="245" Height="21"/>
+
 
         <Button Content="Create" IsDefault="True" HorizontalAlignment="Left" Margin="179,125,0,-18" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.187,0.75" Click="Button_Click"/>
         <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="259,125,0,-18"/>
+
     </Grid>
 </Window>

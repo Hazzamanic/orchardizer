@@ -100,7 +100,7 @@ namespace Orchardization
                 { "RecordStorage", recordStorage },
                 { "ShowAdminSummary", _viewModel.ShowAdminSummary },
                 { "HasSiteGroup", hassitegroup },
-                { "Feature", _viewModel.Feature },
+                { "Feature", _viewModel.Feature ?? "" },
                 { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature) }
             };
 

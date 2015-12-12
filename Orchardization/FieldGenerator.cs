@@ -88,7 +88,7 @@ namespace Orchardization
                 { "FirstKey", firstKey },
                 { "FirstType", firstType },
                 { "IndexField", _viewModel.IndexField },
-                { "Feature", _viewModel.Feature },
+                { "Feature", _viewModel.Feature ?? "" },
                 { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature)  }
             };
 

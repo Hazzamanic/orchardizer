@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>ojqueryblock</Title>
+			<Shortcut>ojQueryBlock</Shortcut>
+			<Description>Code snippet for creating a script block with jQuery</Description>
+			<Author>Hazzamanic</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="html">
+				<![CDATA[@using (Script.Foot())
+        {
+          <script type="text/javascript">
+            (function ($$) {
+              $end$
+            })(jQuery);
+          </script>
+        }]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

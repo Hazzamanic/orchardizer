@@ -69,7 +69,7 @@ namespace Orchardization
                 { "Module", Context.ActiveProject.Name },
                 { "PartName", part },
                 { "Settings", props },
-                { "Feature", _viewModel.Feature },
+                { "Feature", _viewModel.Feature ?? "" },
                 { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature)  }
             };
 

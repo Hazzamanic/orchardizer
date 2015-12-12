@@ -20,7 +20,7 @@ namespace Orchardization
             description: "Create an Orchard Field",
             author: "Hazzamanic",
             version: new Version(1, 0, 0, 0),
-            id: typeof(ElementGenerator).Name,
+            id: typeof(FieldGenerator).Name,
             icon: ToImageSource(Resources._TemplateIconSample),
             gestures: new[] { "Controller", "View", "Area" },
             categories: new[] { "Common/Orchard" });
