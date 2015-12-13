@@ -141,6 +141,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Guids.cs" />
+    <Content Include="OrchardTemplates\__BlankModule\1.9.0\BlankModule.csproj">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="OrchardTemplates\__BlankModule\1.9.0\Module.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.1\BlankModule.csproj">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="OrchardTemplates\__BlankModule\1.9.1\Module.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="OrchardTemplates\__BlankModule\1.9.2\BlankModule.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -155,6 +169,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.0\Properties\AssemblyInfo.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.1\Properties\AssemblyInfo.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="OrchardVersions.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -165,6 +185,24 @@
     <Compile Include="OrchardizerPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
+    <Content Include="OrchardTemplates\__BlankModule\1.9.0\Scripts\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.0\Styles\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.0\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.1\Scripts\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.1\Styles\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.1\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Snippets\Orchard\ScriptBlock.snippet" />
     <None Include="Snippets\Orchard\jQueryBlock.snippet" />
     <Compile Include="UI\EditMigrationsViewModel.cs" />
@@ -618,8 +656,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="OrchardTemplates\__BlankModule\1.9.0\" />
-    <Folder Include="OrchardTemplates\__BlankModule\1.9.1\" />
+    <Folder Include="OrchardTemplates\__BlankModule\1.9.0\Controllers\" />
+    <Folder Include="OrchardTemplates\__BlankModule\1.9.0\Models\" />
+    <Folder Include="OrchardTemplates\__BlankModule\1.9.0\Views\" />
+    <Folder Include="OrchardTemplates\__BlankModule\1.9.1\Controllers\" />
+    <Folder Include="OrchardTemplates\__BlankModule\1.9.1\Models\" />
+    <Folder Include="OrchardTemplates\__BlankModule\1.9.1\Views\" />
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Controllers\" />
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Models\" />
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Views\" />

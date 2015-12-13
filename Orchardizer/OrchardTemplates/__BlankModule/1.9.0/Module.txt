@@ -1,0 +1,10 @@
+﻿Name: $$ModuleName$$
+AntiForgery: enabled
+Author: Orchardizer
+Website: https://github.com/Hazzamanic/orchardizer
+Version: 1.0
+OrchardVersion: 1.9.0
+Description: Description for the module
+Features:
+    $$ModuleName$$:
+        Description: Description for feature $$ModuleName$$.
