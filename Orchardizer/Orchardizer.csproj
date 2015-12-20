@@ -144,17 +144,21 @@
     <Content Include="OrchardTemplates\__BlankModule\1.9.0\BlankModule.csproj">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="OrchardTemplates\__BlankModule\1.9.0\Module.txt">
+    <Content Include="OrchardTemplates\__BlankModule\1.9.0\Module.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.1\BlankModule.csproj">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="OrchardTemplates\__BlankModule\1.9.1\Module.txt">
+    <Content Include="OrchardTemplates\__BlankModule\1.9.1\Module.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.2\BlankModule.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -171,9 +175,11 @@
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.0\Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.1\Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Compile Include="OrchardVersions.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -187,21 +193,39 @@
     <Compile Include="PkgCmdID.cs" />
     <Content Include="OrchardTemplates\__BlankModule\1.9.0\Scripts\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.0\Styles\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.0\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.1\Scripts\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.1\Styles\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.1\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.0\Placement.info">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.1\Placement.info">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.9.2\Placement.info">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="Snippets\Orchard\ScriptBlock.snippet" />
     <None Include="Snippets\Orchard\jQueryBlock.snippet" />
