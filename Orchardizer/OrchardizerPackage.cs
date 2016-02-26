@@ -327,7 +327,8 @@ namespace Orchardizer
             // edit module.txt
             Insert(newDir + "\\Module.txt", new[]
             {
-                new KeyValuePair<string, string>("$name$", name),
+                new KeyValuePair<string, string>("$$ModuleName$$", name),
+
             });
 
             // save our shiny new module

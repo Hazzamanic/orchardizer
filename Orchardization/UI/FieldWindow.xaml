@@ -43,9 +43,9 @@
         <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="169,321,0,0"/>
 
         <TextBlock HorizontalAlignment="Left" Height="124.157" Margin="504.187,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116.914" FontStyle="Italic"><Run Text="Format" TextDecorations="Underline"/><LineBreak/><Run Text="Value"/><Run Text=":string"/><LineBreak/><Run Text="Age:int"/><LineBreak/><Run Text="Awesome:bool"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="20" Margin="40,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" FontStyle="Italic"><Run Text="Recommended to use Value for the name of the"/><Run Text=" main"/><Run Text=" field value"/></TextBlock>
-        <Label Content="Index Field" HorizontalAlignment="Left" Margin="36,239,0,0" VerticalAlignment="Top" Width="119" 	/>
+        <TextBlock HorizontalAlignment="Left" Height="54" Margin="40,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" FontStyle="Italic"><Run Text="The first value will use the default field storage and subsequent properties will use named field storage. All properties will be added to Lucene and Projections indexing, check the Driver's Describe method if you want to make changes."/></TextBlock>
+        <!--<Label Content="Index Field" HorizontalAlignment="Left" Margin="36,239,0,0" VerticalAlignment="Top" Width="119" 	/>
         <CheckBox Content="" HorizontalAlignment="Left" Height="14" Margin="169,246,0,0" VerticalAlignment="Top" Width="41" IsChecked="{Binding IndexField}"/>
-        <TextBlock HorizontalAlignment="Left" Height="20" Margin="210,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" FontStyle="Italic"><Run Text="This will index all the fields properties "/><Run Text="in projections and Lucene"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="210,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" FontStyle="Italic"><Run Text="This will index all the fields properties "/><Run Text="in projections and Lucene"/></TextBlock>-->
     </Grid>
 </Window>

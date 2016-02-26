@@ -2,7 +2,6 @@
 <#@ Output Extension="cshtml" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System" #>
-<#@ import namespace="System.String" #>
 <#@ parameter type="System.String" name="ElementName" #>
 <#@ parameter type="System.String" name="NamePlusElement" #>
 <#@ parameter type="System.String" name="Module" #>

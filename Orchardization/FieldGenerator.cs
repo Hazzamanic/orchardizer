@@ -147,6 +147,8 @@ namespace Orchardization
                 placementText = placementText.Insert(placementText.LastIndexOf("</Placement>"), placement);
                 File.WriteAllText(placementPath, placementText);
             }
+
+            Context.ActiveProject.Save();
         }        
     }
 }

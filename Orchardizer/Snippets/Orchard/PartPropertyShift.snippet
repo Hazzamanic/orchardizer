@@ -2,8 +2,8 @@
 <CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Part Store n Retrieve</Title>
-      <Shortcut>oPartStoreRetrieve</Shortcut>
+      <Title>Part Property (The Shift)</Title>
+      <Shortcut>oshiftpart</Shortcut>
       <Description>Code snippet for generating an orchard part property with store and retrieve methods (no backing record)</Description>
       <Author>Hazzamanic</Author>
       <SnippetTypes>
@@ -23,7 +23,7 @@
           <Default>Property</Default>
         </Literal>
       </Declarations>
-      <Code Language="csharp">
+      <Code Language="CSharp">
         <![CDATA[public $type$ $name$
 				{
 					get { return this.Retrieve(x => x.$name$); }

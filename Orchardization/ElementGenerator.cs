@@ -104,6 +104,44 @@ namespace Orchardization
             vsproject.References.Add("Orchard.Core");
             vsproject.References.Add("Orchard.Framework");
 
+            Project orchardForms = null;
+            Project orchardLayouts = null;
+
+            var formProject = Context.ActiveProject.UniqueName;
+            var projects = vsproject.DTE.Solution.Projects;
+            var item = projects.GetEnumerator();
+            while (item.MoveNext())
+            {
+                var p = item.Current as Project;
+                if (p.Name != "Modules")
+                    continue;
+
+                for (var i = 1; i <= p.ProjectItems.Count; i++)
+                {
+                    var subProject = p.ProjectItems.Item(i).SubProject;
+                    if (subProject == null)
+                    {
+                        continue;
+                    }
+
+                    // If this is another solution folder, do a recursive call, otherwise add
+                    if (subProject.Name == "Orchard.Forms")
+                    {
+                        orchardForms = subProject;
+                    }
+                    if (subProject.Name == "Orchard.Layouts")
+                        orchardLayouts = subProject;
+
+                    // this wont work if those modules are not in the solution
+                    if (orchardLayouts != null && orchardForms != null)
+                        break;
+                }
+                break;
+            }
+
+            vsproject.References.AddProject(orchardForms);
+            vsproject.References.AddProject(orchardLayouts);
+
             // in case people are trying to add elements to Orchard.Layouts
             //if (!vsproject.Project.Name.Contains("Orchard.Layouts")) vsproject.References.Add("Orchard.Layouts.csproj");
 
@@ -114,11 +152,13 @@ namespace Orchardization
                     parameters,
                     skipIfExists: true);
 
+            
+
             // Add the driver folder and file
             AddFolder(Context.ActiveProject, "Drivers");
             if (_viewModel.HasEditor && formsEditor)
             {
-                vsproject.References.Add("Orchard.Forms");
+                
 
                 AddFileFromTemplate(Context.ActiveProject,
                     "Drivers\\" + namePlusElement + "Driver",

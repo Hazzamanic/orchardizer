@@ -40,7 +40,6 @@ namespace <#= Module #>.Drivers {
             return field.Name;
         }
 
-<# if(!SiteSetting) { #>
         protected override DriverResult Display(ContentPart part, <#= FieldName #> field, string displayType, dynamic shapeHelper) {
             // Put all your driver logic inside this method so that if your field is not being displayed no logic is run. Yay efficiency
             return ContentShape("Fields_<#= FieldName #>", GetDifferentiator(field, part),
@@ -48,19 +47,13 @@ namespace <#= Module #>.Drivers {
                     return shapeHelper.Fields_<#= FieldName #>(Model: part);
                 });
         }
-<# } #>
 
         protected override DriverResult Editor(ContentPart part, <#= FieldName #> field, dynamic shapeHelper) {
-            return ContentShape("Parts_<#= FieldName #>_Edit", GetDifferentiator(field, part), 
+            return ContentShape("Fields_<#= FieldName #>_Edit", GetDifferentiator(field, part), 
                 () => shapeHelper.EditorTemplate(
-                    TemplateName: "Parts/<#= FieldName #>",
+                    TemplateName: "Fields/<#= FieldName #>",
                     Model: part,
-<# if(SiteSetting && HasSiteGroup) { #>
-                    Prefix: Prefix))
-                    .OnGroup("<#= SiteSection #>");
-<# } else { #>
                     Prefix: Prefix));
-<# } #>
         }
 
         protected override DriverResult Editor(ContentPart part, <#= FieldName #> field, IUpdateModel updater, dynamic shapeHelper) {
@@ -72,7 +65,7 @@ namespace <#= Module #>.Drivers {
 
         protected override void Importing(ContentPart part, <#= FieldName #> field, ImportContentContext context) {
 <#  foreach(var property in Properties) { #>
-			context.ImportAttribute(field.FieldDefinition.Name + "." + field.Name, "<#= property.Key #>"
+			context.ImportAttribute(field.FieldDefinition.Name + "." + field.Name, "<#= property.Key #>",
 <# if(property.Value.Contains("bool")) { #>
                 v => field.<#= property.Key #> = bool.Parse(v));
 <# } else if(property.Value.Contains("string") || property.Value.Contains("String")) { #>
@@ -87,11 +80,10 @@ namespace <#= Module #>.Drivers {
                 // didn't know what to do... ToString()!
                 v => field.<#= property.Key #> = v.ToString());
 <# } #>
-            }
 <# } #>
         }
 
-        protected override void Exporting(<#= FieldName #> part, ExportContentContext context) {
+        protected override void Exporting(ContentPart part, <#= FieldName #> field, ExportContentContext context) {
 <#  foreach(var property in Properties) { #>
 <#	if(property.Value.Contains("DateTime")) { #>
 			context.Element(GetPrefix(field, part)).SetAttributeValue("<#= property.Key #>", XmlConvert.ToString(field.Storage.Get<DateTime>("<#= property.Key #>"), XmlDateTimeSerializationMode.Utc));
@@ -102,9 +94,29 @@ namespace <#= Module #>.Drivers {
         }
 
 		protected override void Describe(DescribeMembersContext context) {
+			// .Member() will index these properties in the Projections module and allow you to filter on field values
+			// .Enumerate will index these properties for search
             context
-                .Member("<#= property.Key #>", typeof(<#= property.Value #>), T("<#= property.Key #>"), T("Description for the <#= property.Key #> value of the field."))
-                .Enumerate<<#= FieldName #>>(() => field => new[] { field.DateTime });
+<#  
+int i = 0;
+foreach(var property in Properties) { 
+if(i == 0) {
+#>
+                .Member(null, typeof(<#= property.Value #>), T("<#= property.Key #>"), T("Description for the <#= property.Key #> value of the field."))
+<# } else { #>
+				.Member("<#= property.Key #>", typeof(<#= property.Value #>), T("<#= property.Key #>"), T("Description for the <#= property.Key #> value of the field."))
+<# } i++; } #>
+                .Enumerate<<#= FieldName #>>(() => field => new[] { 
+<#  
+int j = 0;
+foreach(var property in Properties) { 
+if(j == 0) {
+#>
+					field.<#= property.Key #>
+<# } else { #>
+					, field.<#= property.Key #>
+<# } j++; } #>
+				});
         }
     }
 }

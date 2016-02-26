@@ -227,8 +227,27 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <None Include="Snippets\Orchard\ScriptBlock.snippet" />
-    <None Include="Snippets\Orchard\jQueryBlock.snippet" />
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\Theme.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\Theme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\__BlankThemeProject.csproj">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="Snippets\Orchard\ScriptBlock.snippet">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="Snippets\Orchard\jQueryBlock.snippet">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Compile Include="UI\EditMigrationsViewModel.cs" />
     <Compile Include="UI\EditMigrationsWindow.xaml.cs">
       <DependentUpon>EditMigrationsWindow.xaml</DependentUpon>
@@ -525,6 +544,7 @@
     <Content Include="Snippets\Orchard\AdminMenu.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Snippets\Orchard\Driver.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -542,13 +562,43 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\PartStoreRetrieve.snippet">
+    <Content Include="Snippets\Orchard\PartPropertyShift.snippet">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="Snippets\Orchard\PartPropertyBackingRecord.snippet">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="Snippets\Orchard\PartImport.snippet">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Snippets\Orchard\PartRecordStoreRetrieve.snippet">
+    <Content Include="Snippets\Orchard\PartExport.snippet">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\Content\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\Placement.info">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\Scripts\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\Styles\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.9.1\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -689,6 +739,7 @@
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Controllers\" />
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Models\" />
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Views\" />
+    <Folder Include="OrchardTemplates\__BlankThemeProject\1.9.1\Views\" />
     <Folder Include="OrchardTemplates\__BlankThemeProject\1.9.2\Views\" />
     <Folder Include="OrchardTemplates\__BlankTheme\Views\" />
   </ItemGroup>
