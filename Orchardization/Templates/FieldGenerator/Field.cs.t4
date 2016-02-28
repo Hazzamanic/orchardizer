@@ -27,11 +27,13 @@ if(i == 0) {
         public <#=  property.Value #> <#= property.Key #> { 
 			get { return Storage.Get<<#=  property.Value #>>(); } 
 			set { Storage.Set(value); } // potentially need to check for null here e.g. value ?? String.Empty
+		}
 <#
 } else { #>
 		public <#=  property.Value #> <#= property.Key #> { 
 			get { return Storage.Get<<#=  property.Value #>>("<#= property.Key #>"); } 
 			set { Storage.Set("<#= property.Key #>", value); } // potentially need to check for null here e.g. value ?? String.Empty
+		}
 <#
 }
 i++;

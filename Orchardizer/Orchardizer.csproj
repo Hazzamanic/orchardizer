@@ -240,11 +240,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\ScriptBlock.snippet">
+    <Content Include="Snippets\HTML\Orchard\ScriptBlock.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\jQueryBlock.snippet">
+    <Content Include="Snippets\HTML\Orchard\jQueryBlock.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -536,17 +536,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\Feature.snippet">
+    <Content Include="Snippets\CSharp\Orchard\Feature.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Snippets\Orchard\AdminMenu.snippet">
+    <Content Include="Snippets\CSharp\Orchard\AdminMenu.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\Driver.snippet">
+    <Content Include="Snippets\CSharp\Orchard\Driver.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -562,21 +562,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\PartPropertyShift.snippet">
+    <Content Include="Snippets\CSharp\Orchard\PartPropertyShift.snippet">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\PartPropertyBackingRecord.snippet">
+    <Content Include="Snippets\CSharp\Orchard\PartPropertyBackingRecord.snippet">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\Orchard\PartImport.snippet">
+    <Content Include="Snippets\CSharp\Orchard\PartImport.snippet">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Snippets\Orchard\PartExport.snippet">
+    <Content Include="Snippets\CSharp\Orchard\PartExport.snippet">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -126,9 +126,8 @@ namespace Orchardization
 
                     // If this is another solution folder, do a recursive call, otherwise add
                     if (subProject.Name == "Orchard.Forms")
-                    {
                         orchardForms = subProject;
-                    }
+
                     if (subProject.Name == "Orchard.Layouts")
                         orchardLayouts = subProject;
 

@@ -1,4 +1,8 @@
 ﻿
 // C#
 [$RootKey$\Languages\CodeExpansions\CSharp\Paths]
-"Orchard"="$PackageFolder$\Snippets\Orchard"
+"Orchard"="$PackageFolder$\Snippets\CSharp\Orchard"
+
+// HTML
+[$RootKey$\Languages\CodeExpansions\HTML\Paths]
+"Orchard"="$PackageFolder$\Snippets\HTML\Orchard"
