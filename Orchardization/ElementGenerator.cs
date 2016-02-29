@@ -138,8 +138,18 @@ namespace Orchardization
                 break;
             }
 
-            vsproject.References.AddProject(orchardForms);
-            vsproject.References.AddProject(orchardLayouts);
+            try
+            {
+                if(orchardForms != null)
+                    vsproject.References.AddProject(orchardForms);
+
+                if (orchardLayouts != null)
+                    vsproject.References.AddProject(orchardLayouts);
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             // in case people are trying to add elements to Orchard.Layouts
             //if (!vsproject.Project.Name.Contains("Orchard.Layouts")) vsproject.References.Add("Orchard.Layouts.csproj");
