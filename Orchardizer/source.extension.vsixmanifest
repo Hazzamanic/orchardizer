@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="503bb8fb-9dbc-4217-9d45-f5f59ce613b5" Version="0.3.1.0" Language="en-US" Publisher="Hazzamanic" />
+    <Identity Id="503bb8fb-9dbc-4217-9d45-f5f59ce613b5" Version="0.3.1.1" Language="en-US" Publisher="Hazzamanic" />
     <DisplayName>Orchardizer</DisplayName>
     <Description xml:space="preserve">This extension offers a few facilities to ease the development of Orchard CMS modules and themes</Description>
     <MoreInfo>https://github.com/Hazzamanic/orchardizer</MoreInfo>

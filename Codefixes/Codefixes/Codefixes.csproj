@@ -32,11 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CodeFixProvider.cs" />
     <Compile Include="ConstructorRewriter.cs" />
     <Compile Include="CtorInjectionAnalyzer.cs" />
     <Compile Include="CtorInjectionCodeFixProvider.cs" />
-    <Compile Include="DiagnosticAnalyzer.cs" />
     <Compile Include="Helpers\RoslynExtensions.cs" />
     <Compile Include="Models\CtorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
