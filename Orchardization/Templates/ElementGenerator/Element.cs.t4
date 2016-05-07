@@ -32,7 +32,7 @@ namespace <#= Module #>.Elements {
 
 		// Insert a font awesome icon's unicode value here
 		// https://fortawesome.github.io/Font-Awesome/icons/
-		public virtual string ToolboxIcon {
+		public override string ToolboxIcon {
             get { return "\uf1c9"; }
         }
 
