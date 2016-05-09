@@ -18,7 +18,7 @@ namespace Orchardization
         /// </summary>
         private static CodeGeneratorInformation _info = new CodeGeneratorInformation(
             displayName: "Orchard Layouts Element",
-            description: "Create an Orchard Layours Element",
+            description: "Create an Orchard Layouts Element",
             author: "Hazzamanic",
             version: new Version(1, 0, 0, 0),
             id: typeof(ElementGenerator).Name,
