@@ -41,7 +41,7 @@ namespace <#= Module #>.Settings
 
             if (updateModel.TryUpdateModel(settings, "<#= PartName #>Settings", null, null)) {
 <# foreach(var setting in Settings) { #>
-				builder.WithSetting("<#= PartName #>Settings.<#= setting.Key #>", settings.<#= setting.Key #><# if(setting.Value == "string") #>.ToString(CultureInfo.InvariantCulture)<# } #>);
+				builder.WithSetting("<#= PartName #>Settings.<#= setting.Key #>", settings.<#= setting.Key #><# if(setting.Value == "string") { #>.ToString(CultureInfo.InvariantCulture)<# } #>);
 <# } #>
 			}
 
