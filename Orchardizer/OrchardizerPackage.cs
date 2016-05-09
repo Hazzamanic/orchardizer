@@ -112,6 +112,12 @@ namespace Orchardizer
                     (int)PkgCmdIDList.cmdidMigrations);
                 var migrationsMenuItem = new OleMenuCommand(MigrationsCallback, migrationsCommandId);
                 mcs.AddCommand(migrationsMenuItem);
+
+                // add export type command
+                CommandID exportTypesCommandId = new CommandID(GuidList.guidThemeCreatorCmdSet,
+                    (int)PkgCmdIDList.cmdidExportType);
+                var exportTypesMenuItem = new OleMenuCommand(ExportTypesCallback, exportTypesCommandId);
+                mcs.AddCommand(exportTypesMenuItem);
             }
         }
 
@@ -418,9 +424,9 @@ namespace Orchardizer
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void GenerateContentTypeMigration(object sender, EventArgs e)
+        private void ExportTypesCallback(object sender, EventArgs e)
         {
-            
+
         }
 
         /// <summary>

@@ -53,6 +53,10 @@
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
       </Group>
 
+      <Group guid="guidThemeCreatorCmdSet" id="ToolsMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+
     </Groups>
     
     <!--Buttons section. -->
@@ -107,6 +111,16 @@
           <ButtonText>Generate Migrations</ButtonText>
         </Strings>
       </Button>
+
+      <!-- Tools Menu items -->
+      <Button guid="guidThemeCreatorCmdSet" id="cmdidExportType" priority="0x0100" type="Button">
+        <Parent guid="guidThemeCreatorCmdSet" id="ToolsMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Generate Type Migrations /w Export</ButtonText>
+        </Strings>
+      </Button>
+      
     </Buttons>
     
     
@@ -143,6 +157,8 @@
       <IDSymbol name="cmdidRunBuild" value="0x0103" />
       <IDSymbol name="ModelGroup" value="0x1022" />
       <IDSymbol name="cmdidMigrations" value="0x0104" />
+      <IDSymbol name="ToolsMenuGroup" value="0x1023" />
+      <IDSymbol name="cmdidExportType" value="0x0105" />
     </GuidSymbol>
     
     

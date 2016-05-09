@@ -10,5 +10,6 @@ namespace Orchardizer
         public const uint cmdidRunExe = 0x102;
         public const uint cmdidRunBuild = 0x103;
         public const uint cmdidMigrations = 0x104;
+        public const uint cmdidExportType = 0x105;
     };
 }
