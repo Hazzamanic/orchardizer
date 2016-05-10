@@ -74,16 +74,16 @@
     <Content Include="Assets.json" />
     <Content Include="Scripts\Web.config" />
     <Content Include="Styles\Web.config" />
-    <Content Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Module.txt" />
+    <Content Include="Assets\Styles.less" />
     <Content Include="Placement.info" />
-    <Content Include="Packages.config" />
-    <Folder Include="Properties" />
-    <Folder Include="Controllers" />
+    <Content Include="Content\Web.config" />
+    <Content Include="Theme.txt" />
+    <Content Include="Theme.png" />
     <Folder Include="Views" />
-    <Folder Include="Models" />
+    <Folder Include="Content" />
     <Folder Include="Scripts" />
     <Folder Include="Styles" />
+    <Folder Include="Assets" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">

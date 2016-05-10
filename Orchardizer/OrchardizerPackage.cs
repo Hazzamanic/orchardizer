@@ -337,6 +337,10 @@ namespace Orchardizer
 
             });
 
+            // transformer config files are created with a build action of none which will cause the build to fail after creating a module
+            // delete these files as not particularly useful anyway in Orchard modules
+            DeleteTransformerConfigFiles(newDir);
+
             // save our shiny new module
             newproj.Save();
         }
@@ -951,6 +955,12 @@ namespace Orchardizer
             sw.Write(strFile);
             sw.Close();
             fs2.Close();
+        }
+
+        private void DeleteTransformerConfigFiles(string newDir)
+        {
+            File.Delete(newDir + "\\Web.Debug.config");
+            File.Delete(newDir + "\\Web.Release.config");
         }
 
 

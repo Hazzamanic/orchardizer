@@ -144,10 +144,12 @@
     <Content Include="OrchardTemplates\__BlankModule\1.10\BlankModule.csproj">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="OrchardTemplates\__BlankModule\1.10\Module.txt">
+    <Content Include="OrchardTemplates\__BlankModule\1.10\Module.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.0\BlankModule.csproj">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -190,6 +192,7 @@
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Compile Include="OrchardVersions.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -234,6 +237,19 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.9.2\Placement.info">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Theme.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Theme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\__BlankThemeProject.csproj">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -616,21 +632,27 @@
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\Scripts\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\Styles\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\Placement.info">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\Assets.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\Assets\Styles.less">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankTheme\Assets\Styles.less">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -640,6 +662,39 @@
     </Content>
     <Content Include="OrchardTemplates\__BlankModule\1.10\packages.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Content\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Scripts\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Styles\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Placement.info">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Assets.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Assets\Styles.less">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankThemeProject\1.10\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -787,6 +842,7 @@
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Controllers\" />
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Models\" />
     <Folder Include="OrchardTemplates\__BlankModule\1.9.2\Views\" />
+    <Folder Include="OrchardTemplates\__BlankThemeProject\1.10\Views\" />
     <Folder Include="OrchardTemplates\__BlankThemeProject\1.9.1\Views\" />
     <Folder Include="OrchardTemplates\__BlankThemeProject\1.9.2\Views\" />
     <Folder Include="OrchardTemplates\__BlankTheme\Views\" />
