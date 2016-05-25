@@ -48,13 +48,13 @@ namespace Orchardization
         /// </summary>
         public void Validate()
         {
-            if(String.IsNullOrWhiteSpace(_viewModel.PartName))
+            if (String.IsNullOrWhiteSpace(_viewModel.PartName))
                 throw new InvalidOperationException("Must specify a part name");
 
             if (String.IsNullOrWhiteSpace(_viewModel.Storage))
                 throw new InvalidOperationException("Must specify a storage type");
 
-            if (_viewModel.CreateMigrations) 
+            if (_viewModel.CreateMigrations)
             {
                 if (_viewModel.SelectedMigration == null && String.IsNullOrWhiteSpace(_viewModel.Migration))
                     throw new InvalidOperationException("Must select a migration or specify a new migrations file");
@@ -211,7 +211,7 @@ namespace Orchardization
                 {
                     if (_viewModel.SelectedMigration == null)
                     {
-                        
+
                     }
                     EditMigrations(props);
                 }
@@ -230,6 +230,8 @@ namespace Orchardization
                         { "Description", _viewModel.HelpText },
                         { "CreateWidget", _viewModel.CreateWidget },
                         { "WidgetName", (_viewModel.WidgetName ?? partName + "Widget").Trim() },
+                        { "Feature", _viewModel.Feature ?? "" },
+                        { "HasFeature", !String.IsNullOrWhiteSpace(_viewModel.Feature) }
                     };
 
                     AddFileFromTemplate(
@@ -269,7 +271,7 @@ namespace Orchardization
                 var index = member.Name.IndexOf("UpdateFrom");
                 if (index == -1)
                     continue;
-                
+
                 migrations.Add(Int32.Parse(member.Name.Last().ToString()));
             }
             // sort numbers, just in case
@@ -334,7 +336,7 @@ namespace Orchardization
 
             // format document
             tp.CreateEditPoint().SmartFormat(ep);
-            
+
         }
 
         public string GenerateDbType(string property)
