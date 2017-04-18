@@ -660,10 +660,6 @@
     <Content Include="OrchardTemplates\__BlankTheme\Assets.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="OrchardTemplates\__BlankModule\1.10\packages.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="OrchardTemplates\__BlankThemeProject\1.10\Content\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -693,6 +689,10 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="OrchardTemplates\__BlankThemeProject\1.10\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="OrchardTemplates\__BlankModule\1.10\packages.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
