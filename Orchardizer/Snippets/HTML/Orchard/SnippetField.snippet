@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Snippet Field Html Helper</Title>
+			<Shortcut>osnippetfield</Shortcut>
+			<Description>Code snippet for creating a parameterized snippet field html helper</Description>
+			<Author>Hazzamanic</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+      <Declarations>
+        <Literal>
+          <ID>property</ID>
+          <ToolTip>Name of the snippet property</ToolTip>
+          <Default>Property</Default>
+        </Literal>
+        <Literal>
+          <ID>displayname</ID>
+          <ToolTip>Display name of the snippet property</ToolTip>
+          <Default>DisplayName</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Description of the snippet property</ToolTip>
+          <Default>Description</Default>
+        </Literal>
+      </Declarations>
+			<Code Language="html">
+				<![CDATA[@Html.SnippetField("$property$").DisplayedAs(T("$displayedname$")).WithDescription(T("$description$"))]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
